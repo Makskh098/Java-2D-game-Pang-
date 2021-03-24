@@ -1,0 +1,10 @@
+"Każdy poziom jest różnorodny w zakresie wielkości i ilości piłek oraz ułożenia planszy." - ocywiście, wynika to zpliku konfiguracyjnego... ;-)
+"Dodatkowo 50 pkt " - ok, ale "konkretne" wartości liczbowe też powinny być odczytywane z pliku konfiguracyjnego (jak wszystki inne parametry gry/rozgrywki)
+
+
+- nic o "funkcjonalności sieciowej" - nie przewidują Panowie?
+
+- elementy dodatkowe: żadnych? za to są punkty do zdobycia ;-)
+
+
+Etap zaliczony (chociaż BRAK elementów dodatkowych / bonusów...).
