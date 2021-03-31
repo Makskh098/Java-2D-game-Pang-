@@ -11,5 +11,5 @@ public class ConfigMap {
     float percent_of_medium_balls;
     float percent_of_large_balls;
     float percent_of_extraLarge_balls;
-
+// TO DO construktor
 }

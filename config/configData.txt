@@ -1,1 +1,5 @@
 radius=9
+number_of_levels=3
+map1 =
+map2 =
+map3 =

@@ -24,6 +24,13 @@ public class ConfigLoad {
             //Load data to ConfigData
 
             ConfigData.radius_of_extraLarge_ball = Double.parseDouble( prop.getProperty("radius") );
+            ConfigData.number_of_levels = Integer.parseInt( prop.getProperty("number_of_levels") );
+//            for (int i = 0; i < ConfigData.number_of_levels ; i++) {
+//
+//
+//                ConfigData.List_of_Config_of_Maps.add(new ConfigMap())
+//
+//            } // TO DO wczytywanie dalsze
 
 
 
