@@ -4,9 +4,9 @@ public class ConfigData {
 
 //  Balls
     static double radius_of_extraLarge_ball;
-    static double radius_of_large_ball = radius_of_extraLarge_ball/2;
-    static double radius_of_medium_ball = radius_of_large_ball/2;
-    static double radius_of_small_ball = radius_of_medium_ball/2;
+    static double radius_of_large_ball; //  radius_of_extraLarge_ball/2
+    static double radius_of_medium_ball; // radius_of_extraLarge_ball/4 //process in ConfigLoad.load()
+    static double radius_of_small_ball; //  radius_of_extraLarge_ball/8
     static double max_speed_of_ball;
     static double const_Xball_speed_value;
     static double const_gravity_value;

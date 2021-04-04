@@ -5,7 +5,7 @@ public class Main {
 
         ConfigLoad configLoad  = new ConfigLoad();
         ConfigData data = new ConfigData();
-        configLoad.Load("config/configData.txt");
+        configLoad.load("config/configData.txt");
         System.out.println(data);
     }
 }

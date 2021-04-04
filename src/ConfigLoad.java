@@ -12,7 +12,7 @@ import java.util.Properties;
 public class ConfigLoad {
     InputStream inputStream;
 
-    public void Load(String file_name) throws IOException{
+    public void load(String file_name) throws IOException{
         try {
             Properties prop = new Properties();
 
@@ -27,6 +27,9 @@ public class ConfigLoad {
             //Load data to ConfigData
             //Balls
             ConfigData.radius_of_extraLarge_ball = Double.parseDouble( prop.getProperty("radius_of_extraLarge_ball"));
+            ConfigData.radius_of_large_ball = ConfigData.radius_of_extraLarge_ball/2;
+            ConfigData.radius_of_medium_ball = ConfigData.radius_of_extraLarge_ball/4;
+            ConfigData.radius_of_small_ball = ConfigData.radius_of_extraLarge_ball/8;
             ConfigData.max_speed_of_ball = Double.parseDouble( prop.getProperty("max_speed_of_ball"));
             ConfigData.const_Xball_speed_value = Double.parseDouble( prop.getProperty("const_Xball_speed_value"));
             ConfigData.const_gravity_value = Double.parseDouble( prop.getProperty("const_gravity_value"));
