@@ -12,17 +12,16 @@ import java.util.Properties;
 public class ConfigLoad {
     InputStream inputStream;
 
-    public void Load() throws IOException{
+    public void Load(String file_name) throws IOException{
         try {
             Properties prop = new Properties();
-            String propFileName = "config/configData.txt";
 
-            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            inputStream = getClass().getClassLoader().getResourceAsStream(file_name);
 
             if (inputStream != null) {
                 prop.load(inputStream);
             } else {
-                throw new FileNotFoundException("config file '" + propFileName + "' not found");
+                throw new FileNotFoundException("config file '" + file_name + "' not found");
             }
 
             //Load data to ConfigData
