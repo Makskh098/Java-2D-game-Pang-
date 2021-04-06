@@ -28,6 +28,9 @@ public class ConfigData {
         StringBuilder res = new StringBuilder();
 
         res.append("radius_of_extraLarge_ball=").append(radius_of_extraLarge_ball).append("\n");
+        res.append("radius_of_large_ball").append(radius_of_large_ball).append("\n");
+        res.append("radius_of_medium_ball").append(radius_of_medium_ball).append("\n");
+        res.append("radius_of_small_ball").append(radius_of_small_ball).append("\n");
         res.append("max_speed_of_ball=").append(max_speed_of_ball).append("\n");
         res.append("const_Xball_speed_value=").append(const_Xball_speed_value).append("\n");
         res.append("const_gravity_value=").append(const_gravity_value).append("\n");

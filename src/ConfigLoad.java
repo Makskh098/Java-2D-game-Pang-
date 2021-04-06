@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
+import java.io.File;
 
 public class ConfigLoad {
     InputStream inputStream;
@@ -48,6 +48,10 @@ public class ConfigLoad {
                 float percent_of_m_balls = Float.parseFloat(dict_of_map_data.get("percent_of_medium_balls"));
                 float percent_of_l_balls = Float.parseFloat(dict_of_map_data.get("percent_of_large_balls"));
                 float percent_of_xl_balls = Float.parseFloat(dict_of_map_data.get("percent_of_extraLarge_balls"));
+
+                if (percent_of_s_balls + percent_of_m_balls + percent_of_l_balls + percent_of_xl_balls != 1.0){
+                    throw new Exception("percent of balls don't sum to 100%");
+                }
 
                 ConfigData.List_of_Config_of_Maps.add(new ConfigMap(map_len,map_height,num_of_balls,percent_of_s_balls,percent_of_m_balls,percent_of_l_balls,percent_of_xl_balls));
 
