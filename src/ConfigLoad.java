@@ -33,6 +33,10 @@ public class ConfigLoad {
             ConfigData.max_speed_of_ball = Double.parseDouble( prop.getProperty("max_speed_of_ball"));
             ConfigData.const_Xball_speed_value = Double.parseDouble( prop.getProperty("const_Xball_speed_value"));
             ConfigData.const_gravity_value = Double.parseDouble( prop.getProperty("const_gravity_value"));
+            ConfigData.points_for_extralarge_ball = Integer.parseInt(prop.getProperty("points_for_extralarge_ball"));
+            ConfigData.points_for_large_ball = Integer.parseInt(prop.getProperty("points_for_large_ball"));
+            ConfigData.points_for_medium_ball = Integer.parseInt(prop.getProperty("points_for_medium_ball"));
+            ConfigData.points_for_small_ball = Integer.parseInt(prop.getProperty("points_for_small_ball"));
 
             // Maps
             ConfigData.number_of_levels = Integer.parseInt( prop.getProperty("number_of_levels") );
