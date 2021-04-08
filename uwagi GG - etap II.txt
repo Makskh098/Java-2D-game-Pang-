@@ -1,0 +1,9 @@
+
+- dodać skrypty do kompilacji i uruchomienia programu poza środowiskiem - i tak są potrzebne na koniec, a mi pomogą w sprawdzaniu etapów ;-)
+- jeden plik konfiguracyjny z definicją wszystkich poziomów wymaga (chyba) wczytania wszystkich poziomów od razu...
+  a jeśli będzie ich baaaardzo dużo? albo będą wczytywane z sieci?
+  może warto rozważyć taką strukturę, która pozwoli wczytywać w danym momencie tylko jeden poziom - ten, na którym ma toczyć się rozgrywka ???
+- "dziwna" jest ta relacja pomiędzy ConfigData a ConfigLoad... skoro ConfigData ma tylko pola statyczne, to po co tworzony obiekt? tylko dla toString? to już chyba "lepiej" byłoby dodać statycną funkcję do wypisywania / zwracania opisu tekstowego i ją jawnie wywołać...
+
+
+etap zaliczony.  
