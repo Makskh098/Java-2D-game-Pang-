@@ -7,5 +7,9 @@ public class Main {
         ConfigData data = new ConfigData();
         configLoad.load("config/configData.txt");
         System.out.println(data);
+
+        Welcome_Screen welcome_sc = new Welcome_Screen();
+        welcome_sc.window();
+
     }
 }
