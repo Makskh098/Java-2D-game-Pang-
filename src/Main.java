@@ -6,10 +6,14 @@ public class Main {
         ConfigLoad configLoad  = new ConfigLoad();
         ConfigData data = new ConfigData();
         configLoad.load("config/configData.txt");
-        System.out.println(data);
+       System.out.println(data);
 
         Welcome_Screen welcome_sc = new Welcome_Screen();
-        welcome_sc.window();
+        //welcome_sc.window();
+       // MyFrame myFrame = new MyFrame();
+      //  AllBalls allBalls = new AllBalls();
+
+
 
     }
 }
