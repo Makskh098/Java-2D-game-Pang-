@@ -26,13 +26,12 @@ public class Leaderboard {
         StringBuilder text = new StringBuilder();
         text.append("Nr:   Name:   Score:\n");
         sort();
+
         int i=1;
         for (Pair<String,Integer> ele: this.leader_board_list) {
             text.append(i).append(".    ").append(ele.getElement0()).append("    ").append(ele.getElement1()).append('\n');
             i += 1;
         }
-
-        System.out.println(text.toString());
 
         return text.toString();
     }
@@ -63,12 +62,12 @@ public class Leaderboard {
                 myWriter.write(ele.getElement0() + ',' + ele.getElement1() + '\n');
             }
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
+
     public static class Pair<K, V> {
 
         private final K element0;

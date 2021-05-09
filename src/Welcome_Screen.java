@@ -72,8 +72,6 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         String action = ae.getActionCommand();
 
         if (action.equals("credits")) {
-//            OK_Window credits = new OK_Window("Credits", "Jan Bronowski" + "<br>" + "Maks K.");
-//            credits.createAndShowGUI();
             JOptionPane.showMessageDialog(this, "Jan Bronowski and Maks K.", "Credits", JOptionPane.INFORMATION_MESSAGE);
         }
 
