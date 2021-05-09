@@ -9,9 +9,7 @@ public class Main {
        System.out.println(data);
 
         Welcome_Screen welcome_sc = new Welcome_Screen();
-        //welcome_sc.window();
-       // MyFrame myFrame = new MyFrame();
-      //  AllBalls allBalls = new AllBalls();
+        welcome_sc.window();
 
 
 

@@ -24,6 +24,7 @@ public class OK_Window extends JFrame implements ActionListener{
         JButton ok_b = new JButton("Ok");
         ok_b.addActionListener(this);
         ok_b.setActionCommand("click");
+        setBounds(0,0,200,200);
 
         box_buttons.add(ok_b);
 
@@ -55,7 +56,7 @@ public class OK_Window extends JFrame implements ActionListener{
 
         window();
 
-        this.pack();
+       // this.pack();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
 

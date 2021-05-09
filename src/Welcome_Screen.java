@@ -30,6 +30,9 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         exit_b.addActionListener(this);
         exit_b.setActionCommand("exit");
 
+        start_b.addActionListener(this);
+        start_b.setActionCommand("start");
+
         // buttons layout
         box = new JPanel(new GridLayout(4,1));
         box.add(start_b);
@@ -43,7 +46,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         //text
         welcome_text = "MENU" +
                 "<br>" +
-                "max to dobry ziom";
+                "Janek to dobry ziom";
         String text = "<html><div style='text-algin: center;'>" + welcome_text + "</div></html";
 
 
@@ -55,7 +58,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         getContentPane().add(scroll);
 
         //display
-        this.pack();
+       // this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
@@ -67,12 +70,17 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         String action = ae.getActionCommand();
 
         if (action.equals("credits")) {
-            OK_Window credits = new OK_Window("Credits", "Jan Bronowski" + "<br>" + "Maks K.");
+            OK_Window credits = new OK_Window("Credits", "Jan Bronowski" + "<br>" + "Maksym Khachapuridze");
             credits.createAndShowGUI();
         }
 
         if (action.equals("exit")) {
             dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
+        if(action.equals("start"))
+        {
+            //Map map=new Map(0, 0,400,400);
+           // map.draw();
         }
 
     }
