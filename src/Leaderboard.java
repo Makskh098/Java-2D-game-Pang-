@@ -1,12 +1,12 @@
 import java.io.*;
-import java.math.BigDecimal;
 import java.util.*;
 
 public class Leaderboard {
 
 
     public ArrayList<Pair<String,Integer>> leader_board_list = new ArrayList<>();
-    BufferedReader reader;
+    private String file_path = "leaderboard/leaderboard.csv";
+    private BufferedReader reader;
 
     public void add_score(String name, int score){
         Pair<String,Integer> pom = new Pair(name, score);
@@ -19,15 +19,7 @@ public class Leaderboard {
     };
 
     private void sort(){
-//        leader_board_list.sort((n1, n2) -> {
-//            return new BigDecimal(n2.getElement1()).compareTo(new BigDecimal(n2.getElement1()));
-//        });
-        Collections.sort(leader_board_list, new Comparator<Pair<String, Integer>>() {
-            @Override
-            public int compare(final Pair<String, Integer> o1, final Pair<String, Integer> o2) {
-                return new BigDecimal(o1.getElement1()).compareTo(new BigDecimal(o2.getElement1()));
-            }
-        });
+     leader_board_list.sort(Comparator.comparing(p -> -p.getElement1()));
     }
 
     public String get_string(){
@@ -45,11 +37,12 @@ public class Leaderboard {
         return text.toString();
     }
 
-    public void load_leaderboard(String file_path){
+    public void load_leaderboard(){
 
         try{
             reader = new BufferedReader(new FileReader(file_path));
 
+           leader_board_list.clear();
            String line = reader.readLine();
            while (line != null) {
                String[] text = line.split(",");
@@ -65,7 +58,7 @@ public class Leaderboard {
 
     public void save_leaderboard(){
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
+            FileWriter myWriter = new FileWriter("leaderboard/leaderboard.csv");
             for (Pair<String,Integer> ele:leader_board_list) {
                 myWriter.write(ele.getElement0() + ',' + ele.getElement1() + '\n');
             }

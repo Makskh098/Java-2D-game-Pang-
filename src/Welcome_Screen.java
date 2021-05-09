@@ -10,7 +10,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private JScrollPane scroll;
     private JPanel box;
     private String welcome_text;
-    private Leaderboard ld;
+    private final Leaderboard ld = new Leaderboard();
     public void window(){
 
         setSize(400,400);
@@ -84,11 +84,9 @@ public class Welcome_Screen extends JFrame implements ActionListener {
             }
         }
 
-        if (action.equals("leaderB")){
-            ld = new Leaderboard();
-            ld.load_leaderboard("leaderboard/leaderboard.csv");
-            OK_Window credits = new OK_Window("Leaderboard", ld.get_string());
-            credits.createAndShowGUI();
+        if (action.equals("leaderB")) {
+            ld.load_leaderboard();
+            JOptionPane.showMessageDialog(this, ld.get_string(), "leaderboard", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }
