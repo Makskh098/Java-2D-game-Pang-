@@ -41,19 +41,18 @@ public class OK_Window extends JFrame implements ActionListener{
         getContentPane().add(south, BorderLayout.SOUTH);
         getContentPane().add(scroll);
 
-
     }
-        // event
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            String action = ae.getActionCommand();
-            if (action.equals("click")) {
-                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-            }
+
+    // event
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        String action = ae.getActionCommand();
+        if (action.equals("click")) {
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         }
+    }
 
-        public void createAndShowGUI() {
-
+    public void createAndShowGUI() {
         window();
 
        // this.pack();

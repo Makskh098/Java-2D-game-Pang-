@@ -10,9 +10,11 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private JScrollPane scroll;
     private JPanel box;
     private String welcome_text;
+    private Leaderboard ld;
     public void window(){
 
-        setBounds(0, 0,400,400);
+        setSize(400,400);
+        setLocationRelativeTo(null);
         setTitle("PANG");
 
 
@@ -30,8 +32,8 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         exit_b.addActionListener(this);
         exit_b.setActionCommand("exit");
 
-        start_b.addActionListener(this);
-        start_b.setActionCommand("start");
+        table_b.addActionListener(this);
+        table_b.setActionCommand("leaderB");
 
         // buttons layout
         box = new JPanel(new GridLayout(4,1));
@@ -46,7 +48,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         //text
         welcome_text = "MENU" +
                 "<br>" +
-                "Janek to dobry ziom";
+                "max to dobry ziom";
         String text = "<html><div style='text-algin: center;'>" + welcome_text + "</div></html";
 
 
@@ -58,7 +60,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         getContentPane().add(scroll);
 
         //display
-       // this.pack();
+        //this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
@@ -70,17 +72,23 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         String action = ae.getActionCommand();
 
         if (action.equals("credits")) {
-            OK_Window credits = new OK_Window("Credits", "Jan Bronowski" + "<br>" + "Maksym Khachapuridze");
-            credits.createAndShowGUI();
+//            OK_Window credits = new OK_Window("Credits", "Jan Bronowski" + "<br>" + "Maks K.");
+//            credits.createAndShowGUI();
+            JOptionPane.showMessageDialog(this, "Jan Bronowski and Maks K.", "Credits", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (action.equals("exit")) {
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            int check = JOptionPane.showConfirmDialog(this,"Do you want to quit the game?","Exit",JOptionPane.YES_NO_OPTION);
+            if (check == 0) {
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
         }
-        if(action.equals("start"))
-        {
-            //Map map=new Map(0, 0,400,400);
-           // map.draw();
+
+        if (action.equals("leaderB")){
+            ld = new Leaderboard();
+            ld.load_leaderboard("leaderboard/leaderboard.csv");
+            OK_Window credits = new OK_Window("Leaderboard", ld.get_string());
+            credits.createAndShowGUI();
         }
 
     }
