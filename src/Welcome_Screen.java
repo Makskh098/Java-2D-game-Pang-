@@ -92,7 +92,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         }
         if (action.equals("start")) {
             JFrame frame = new JFrame("A World of Balls");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setContentPane(new Engine(640, 480));
             frame.pack();
             frame.setVisible(true);

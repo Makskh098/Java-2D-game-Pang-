@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.Set;
-
 public class ConfigMap {
-    //ArrayList<Set> position_of_balls = new ArrayList<Set>();
     double length_of_map;
     double height_of_map;
     int number_of_balls;

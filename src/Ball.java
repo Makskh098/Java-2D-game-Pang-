@@ -1,13 +1,10 @@
-import javax.swing.*;
 import java.awt.*;
-import java.util.Formatter;
 
 public class Ball {
     float x,y;
     float VelocityX,VelocityY;
     float radius;
-    private Color color;
-    private static final Color DEFAULT_COLOR = Color.RED;
+    private final Color color;
     //Constructor
     public Ball(float x,float y,float velocityX,float velocityY,float radius,Color color){
         this.x=x;
@@ -50,9 +47,9 @@ public class Ball {
             VelocityY=(-VelocityY); // reflection
             y=BallMaxY;
         }
-        else if(y < BallMinY){
-            VelocityY=(-VelocityY); // reflection
-            y=BallMinY;
+        else if(y < BallMinY) {
+            VelocityY = (-VelocityY); // reflection
+            y = BallMinY;
         }
     }
 }

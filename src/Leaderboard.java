@@ -3,20 +3,18 @@ import java.util.*;
 
 public class Leaderboard {
 
-
     public ArrayList<Pair<String,Integer>> leader_board_list = new ArrayList<>();
-    private String file_path = "leaderboard/leaderboard.csv";
-    private BufferedReader reader;
+    private final String file_path = "leaderboard/leaderboard.csv";
 
     public void add_score(String name, int score){
-        Pair<String,Integer> pom = new Pair(name, score);
+        Pair<String,Integer> pom = new Pair<>(name, score);
         leader_board_list.add(pom);
     }
 
     public Pair<String,Integer> get_score(int index){
         sort();
         return leader_board_list.get(index);
-    };
+    }
 
     private void sort(){
      leader_board_list.sort(Comparator.comparing(p -> -p.getElement1()));
@@ -37,9 +35,9 @@ public class Leaderboard {
     }
 
     public void load_leaderboard(){
-
         try{
-            reader = new BufferedReader(new FileReader(file_path));
+
+            BufferedReader reader = new BufferedReader(new FileReader(file_path));
 
            leader_board_list.clear();
            String line = reader.readLine();
@@ -57,7 +55,7 @@ public class Leaderboard {
 
     public void save_leaderboard(){
         try {
-            FileWriter myWriter = new FileWriter("leaderboard/leaderboard.csv");
+            FileWriter myWriter = new FileWriter(file_path);
             for (Pair<String,Integer> ele:leader_board_list) {
                 myWriter.write(ele.getElement0() + ',' + ele.getElement1() + '\n');
             }
@@ -69,7 +67,6 @@ public class Leaderboard {
     }
 
     public static class Pair<K, V> {
-
         private final K element0;
         private final V element1;
 

@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Engine extends JPanel{
 
     private static final int UPDATE_RATE = 30;// powinno byc z Configa
-    private DrawCanvas canvas;
+    private final DrawCanvas canvas;
     private int canvasWidth;
     private int canvasHeight;
 
@@ -53,18 +53,16 @@ public class Engine extends JPanel{
 //Start game
     //TODO zrobic podwojne bufforowanie;
     public void gameStart(){
-        Thread gameThread = new Thread(){
-            public void run(){
-                while (true){
-                    gameUpdate();
-                    repaint();
-                    try {
-                        Thread.sleep(1000 / UPDATE_RATE);
-                    } catch (InterruptedException ex) {}
+        Thread gameThread = new Thread(() -> {
+            while (true){
+                gameUpdate();
+                repaint();
+                try {
+                    Thread.sleep(1000 / UPDATE_RATE);
+                } catch (InterruptedException ignored) {}
 
-                }
             }
-        };
+        });
         gameThread.start();
     }
     public  void gameUpdate(){

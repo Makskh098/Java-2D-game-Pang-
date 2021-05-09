@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 public class Main {
@@ -8,13 +6,10 @@ public class Main {
         ConfigLoad configLoad  = new ConfigLoad();
         ConfigData data = new ConfigData();
         configLoad.load("config/configData.txt");
-       System.out.println(data);
+        System.out.println(data);
 
-       Welcome_Screen welcome_sc = new Welcome_Screen();
+        Welcome_Screen welcome_sc = new Welcome_Screen();
         welcome_sc.window();
-
-// Test of movement of ball
-
 
     }
 }

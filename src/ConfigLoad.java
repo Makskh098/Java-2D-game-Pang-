@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.io.File;
 
 public class ConfigLoad {
     InputStream inputStream;
