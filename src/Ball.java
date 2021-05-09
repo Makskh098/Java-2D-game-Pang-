@@ -9,11 +9,12 @@ public class Ball {
     private Color color;
     private static final Color DEFAULT_COLOR = Color.RED;
     //Constructor
-    public Ball(float x,float y,float velocityX,float velocityY,Color color){
+    public Ball(float x,float y,float velocityX,float velocityY,float radius,Color color){
         this.x=x;
         this.y=y;
         this.VelocityX=velocityX;
         this.VelocityY=velocityY;
+        this.radius=radius;
         this.color=color;
     }
     //Draw
@@ -25,10 +26,10 @@ public class Ball {
     //movement of ball on map
     public void movementOffBall(Map map){
         // borders for ball's position
-        float BallMinX= map.minX;
-        float BallMinY=map.minY;
-        float BallMaxX= map.maxX;
-        float BallMaxY= map.maxY;
+        float BallMinX= map.minX+radius;
+        float BallMinY=map.minY+radius;
+        float BallMaxX= map.maxX+radius;
+        float BallMaxY= map.maxY+radius;
 
         // changing position of ball- 1 step
         x +=VelocityX;

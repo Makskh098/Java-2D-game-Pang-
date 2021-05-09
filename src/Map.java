@@ -25,5 +25,11 @@ public class Map {
             g.setColor(color_background);
             g.fillRect(minX,minY,maxX-minX-1,maxY-minY-1);
         }
-
+        //dodano na test
+    public void set(int x, int y, int width, int height) {
+        minX = x;
+        minY = y;
+        maxX = x + width - 1;
+        maxY = y + height - 1;
+    }
 }

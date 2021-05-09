@@ -35,6 +35,9 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         table_b.addActionListener(this);
         table_b.setActionCommand("leaderB");
 
+        start_b.addActionListener(this);
+        start_b.setActionCommand("start");
+
 
         // buttons layout
         box = new JPanel(new GridLayout(4,1));
@@ -86,6 +89,13 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         if (action.equals("leaderB")) {
             ld.load_leaderboard();
             JOptionPane.showMessageDialog(this, ld.get_string(), "leaderboard", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if (action.equals("start")) {
+            JFrame frame = new JFrame("A World of Balls");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(new Engine(640, 480));
+            frame.pack();
+            frame.setVisible(true);
         }
 
     }
