@@ -24,7 +24,6 @@ public class Map {
         public void draw(Graphics g){
             g.setColor(color_background);
             g.fillRect(minX,minY,maxX-minX-1,maxY-minY-1);
-
         }
 
 }

@@ -35,6 +35,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         table_b.addActionListener(this);
         table_b.setActionCommand("leaderB");
 
+
         // buttons layout
         box = new JPanel(new GridLayout(4,1));
         box.add(start_b);
@@ -48,7 +49,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         //text
         welcome_text = "MENU" +
                 "<br>" +
-                "max to dobry ziom";
+                "Janek to dobry ziom";
         String text = "<html><div style='text-algin: center;'>" + welcome_text + "</div></html";
 
 
