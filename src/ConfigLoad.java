@@ -24,6 +24,8 @@ public class ConfigLoad {
             }
 
             //Load data to ConfigData
+            //Overall
+            ConfigData.update_rate = Integer.parseInt( prop.getProperty("update_rate"));
             //Balls
             ConfigData.radius_of_extraLarge_ball = Double.parseDouble( prop.getProperty("radius_of_extraLarge_ball"));
             ConfigData.radius_of_large_ball = ConfigData.radius_of_extraLarge_ball/2;
