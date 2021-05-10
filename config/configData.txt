@@ -1,4 +1,4 @@
-update_rate=30
+update_rate=120
 radius_of_extraLarge_ball=9
 max_speed_of_ball=5
 const_Xball_speed_value=2
