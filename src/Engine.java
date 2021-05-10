@@ -4,13 +4,12 @@ import java.util.Random;
 import javax.swing.*;
 public class Engine extends JPanel{
 
-    private static final int UPDATE_RATE = 30;// powinno byc z Configa
     private final DrawCanvas canvas;
     private int canvasWidth;
     private int canvasHeight;
 
     Map map;
-    Ball ball;
+    Ball ball,ball1;
 
     //Constructor
     //Test Canvasa
@@ -20,16 +19,16 @@ public class Engine extends JPanel{
         canvasHeight=Height;
 
         //initiate parameetrs for test
-        Random rand = new Random();
-        int radius=200;
-        int x = rand.nextInt(canvasWidth - radius * 2 - 20) + radius + 10;
-        int y = rand.nextInt(canvasHeight - radius * 2 - 20) + radius + 10;
-        int velocityX=5;
-        int velocityY=5;
+        int radius=50;
+        int x=canvasWidth/2;
+        int y=0;
+        int velocityX=1;
+        int velocityY=-4;
         // init map
-        map=new Map(0,0,canvasWidth,canvasHeight,Color.GRAY,Color.BLUE);
+        map=new Map(0,0,canvasWidth,canvasHeight,Color.GRAY,Color.BLACK);
         //init ball
         ball = new Ball(x,y, velocityX,velocityY,radius,Color.YELLOW);
+        ball1 = new Ball(x+canvasWidth/4,y, velocityX,velocityY,radius,Color.RED);
 
         canvas = new DrawCanvas();
         this.setLayout(new BorderLayout());
@@ -58,7 +57,7 @@ public class Engine extends JPanel{
                 gameUpdate();
                 repaint();
                 try {
-                    Thread.sleep(1000 / UPDATE_RATE);
+                    Thread.sleep(1000 / ConfigData.update_rate);
                 } catch (InterruptedException ignored) {}
 
             }
@@ -67,6 +66,7 @@ public class Engine extends JPanel{
     }
     public  void gameUpdate(){
         ball.movementOffBall(map);
+        ball1.movementOffBall(map);
     }
 
 
@@ -77,10 +77,7 @@ class DrawCanvas extends JPanel {
         super.paintComponent(g);
         map.draw(g);
         ball.draw(g);
-
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Courier New", Font.PLAIN, 12));
-
+        ball1.draw(g);
     }
 
     @Override

@@ -25,8 +25,8 @@ public class Ball {
         // borders for ball's position
         float BallMinX= map.minX+radius;
         float BallMinY=map.minY+radius;
-        float BallMaxX= map.maxX+radius;
-        float BallMaxY= map.maxY+radius;
+        float BallMaxX= map.maxX-radius;
+        float BallMaxY= map.maxY-radius;
 
         // changing position of ball- 1 step
         x +=VelocityX;

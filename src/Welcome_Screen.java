@@ -91,7 +91,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, ld.get_string(), "leaderboard", JOptionPane.INFORMATION_MESSAGE);
         }
         if (action.equals("start")) {
-            JFrame frame = new JFrame("A World of Balls");
+            JFrame frame = new JFrame("Pang");
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setContentPane(new Engine(640, 480));
             frame.pack();

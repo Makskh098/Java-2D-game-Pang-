@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 public class ConfigData {
-
+//  Overall
+    static int update_rate;
 //  Balls
     static double radius_of_extraLarge_ball;
     static double radius_of_large_ball; //  radius_of_extraLarge_ball/2
@@ -31,6 +32,7 @@ public class ConfigData {
     public String toString(){
         StringBuilder res = new StringBuilder();
 
+        res.append("update_rate=").append(update_rate).append("\n");
         res.append("radius_of_extraLarge_ball=").append(radius_of_extraLarge_ball).append("\n");
         res.append("radius_of_large_ball=").append(radius_of_large_ball).append("\n");
         res.append("radius_of_medium_ball=").append(radius_of_medium_ball).append("\n");
