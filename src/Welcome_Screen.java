@@ -4,13 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+
 public class Welcome_Screen extends JFrame implements ActionListener {
+    /***
+     * class of main window extends from swing Jframe and implements ActionListener
+     */
     private JButton start_b, table_b, autors_b, exit_b;
     private JLabel center;
     private JScrollPane scroll;
     private JPanel box;
     private String welcome_text;
     private final Leaderboard ld = new Leaderboard();
+
+    /***
+     * Method that creates main menu window of the game
+     */
     public void window(){
 
         setSize(400,400);
@@ -64,12 +72,16 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         getContentPane().add(scroll);
 
         //display
-        //this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
     }
 
+
+    /***
+     * Implements events logic to main menu
+     * @param ae ActionEvent of buttons
+     */
     //events
     @Override
     public void actionPerformed(ActionEvent ae) {

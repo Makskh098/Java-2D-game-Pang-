@@ -1,6 +1,16 @@
 import java.io.IOException;
 
+/***
+ * Main class tu run game
+ */
+
 public class Main {
+
+    /***
+     * main function to start game
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         ConfigLoad configLoad  = new ConfigLoad();

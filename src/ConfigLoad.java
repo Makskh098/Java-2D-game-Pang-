@@ -8,8 +8,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/***
+ * class to load config data from file
+ */
+
 public class ConfigLoad {
     InputStream inputStream;
+
+    /***
+     * load data from config file to ConfigData object
+     * @param file_name file path
+     * @throws IOException throw exception if something went wrong while reading config file
+     */
 
     public void load(String file_name) throws IOException{
         try {

@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
 public class ConfigData {
+    /***
+     * ConfigData, static class to store configuration data
+     */
+
 //  Overall
     static int update_rate;
 //  Balls
@@ -28,6 +32,10 @@ public class ConfigData {
     static double width_of_ray;
     static double speed_of_ray;
 
+    /***
+     *
+     * @return returns string version of configData object
+     */
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
