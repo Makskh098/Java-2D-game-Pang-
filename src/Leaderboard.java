@@ -23,7 +23,7 @@ public class Leaderboard {
     /***
      *
      * @param index index of which score you want get
-     * @return returns Pair<name,score> from score list
+     * @return returns Pair  from score list
      */
     public Pair<String,Integer> get_score(int index){
         sort();
