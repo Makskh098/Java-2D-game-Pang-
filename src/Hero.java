@@ -1,11 +1,22 @@
 import java.awt.*;
-
+/***
+ * Class describes behavior of hero and it's basic parameters
+ */
 public class Hero extends Rectangle {
     int lives;
     float velocity;
     private final Color color;
 
-    //Constructor
+    /***
+     * Constructor Hero's Class
+     * @param x horizontal position of hero
+     * @param y vertical position of hero
+     * @param width width of hero
+     * @param height height of hero
+     * @param lives number of player's lives
+     * @param velocity velocity of hero
+     * @param color color of hero
+     */
     public Hero(float x, float y, float width, float height, int lives,float velocity,Color color){
         super((int)x,(int)y,(int)width,(int)height);
         this.lives=lives;
@@ -13,6 +24,10 @@ public class Hero extends Rectangle {
         this.color=color;
     }
 
+    /***
+     * Method describes how hero is moving in closed space
+     * @param engine is used to get boundaries
+     */
     public void movementOfHero(Engine2 engine) {
         float heroMinX = (float) 0;
         float heroMinY = this.height;
@@ -28,6 +43,10 @@ public class Hero extends Rectangle {
         }
     }
 
+    /***
+     * defines movement of hero
+     * @param px is used to set hero's step in every frame
+     */
     public void move(int px){
             this.x += px ;
 

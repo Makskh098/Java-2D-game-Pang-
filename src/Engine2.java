@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-
+/***
+ *  Class Engine2 implements game physics,movement of every object in game and graphic animations of those objects.Also it handles controls.
+ *  Class extends JPanel and implements ActionListener and KeyListener
+ */
 public class Engine2 extends JPanel implements ActionListener, KeyListener {
     Timer timer;
     ArrayList<Ball_2D> ball_list_small = new ArrayList<>();
@@ -17,8 +20,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     private double scaleY = 1;
     //Ray ray;
 
-
-
+    /***
+     *  Constructor of Class Engine2
+     * @param width defines width of map
+     * @param height defines height of map
+     */
     public Engine2(int width, int height){
         timer = new Timer(5, this);
         addKeyListener(this);
@@ -31,7 +37,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
-
+    /***
+     * Method painComponent is responsible for drawing animated graphic in game
+     * @param g holds graphic object that will be modified
+     */
     public void paintComponent( Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -62,7 +71,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     }
 
 
-
+    /***
+     * Method is responsible for creating objects that will appear on map, it loads Configuration data from ConfigMap and creates individual objects
+     * @param i this parameter describes which stage is currently loaded
+     */
     public void load_map(int i){
         ConfigMap map = ConfigData.List_of_Config_of_Maps.get(i);
         int number_of_small_balls= (int)(map.number_of_balls* map.percent_of_small_balls);
@@ -90,6 +102,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
     }
 
+    /***
+     * Method calculates positions of objects in game every tact of timer
+     * @param e actionEvent for example step of timer
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.movementOfHero(this);
@@ -113,10 +129,17 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
 
     @Override
+    /***
+     * implements functionality of event of key listener
+     */
     public void keyTyped(KeyEvent e) {
 
     }
 
+    /***
+     * implements functionality of handled event of key listener
+     * @param e Key Event
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -129,6 +152,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             }
         }
 
+    /***
+     * implements functionality of handled event of key listener
+     * @param e Key Event
+     */
 
         @Override
         public void keyReleased(KeyEvent e) {
