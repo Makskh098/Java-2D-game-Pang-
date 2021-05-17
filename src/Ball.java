@@ -4,6 +4,8 @@ public class Ball {
     float x,y;
     float VelocityX,VelocityY;
     float radius;
+    float scaley = 1;
+    float scalex = 1;
     private final Color color;
     //Constructor
     public Ball(float x,float y,float velocityX,float velocityY,float radius,Color color){
@@ -16,8 +18,16 @@ public class Ball {
     }
     //Draw
     public void draw(Graphics g){
-        g.setColor(color);
-        g.fillOval((int)(x-radius),(int)(y-radius),(int)(2*radius),(int)(2*radius));
+
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+
+        g2d.scale(scalex, scaley);
+        g2d.setColor(color);
+        g2d.fillOval((int)(x-radius),(int)(y-radius),(int)(2*radius),(int)(2*radius));
     }
 
     //movement of ball on map

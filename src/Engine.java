@@ -67,6 +67,10 @@ public class Engine extends JPanel{
     public  void gameUpdate(){
         ball.movementOffBall(map);
         ball1.movementOffBall(map);
+        ball.scalex = this.getWidth()/(float)640;
+        ball.scaley = this.getHeight()/(float)480;
+        ball1.scalex = this.getWidth()/(float)640;
+        ball1.scaley = this.getHeight()/(float)480;
     }
 
 
@@ -75,6 +79,7 @@ class DrawCanvas extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         map.draw(g);
         ball.draw(g);
         ball1.draw(g);

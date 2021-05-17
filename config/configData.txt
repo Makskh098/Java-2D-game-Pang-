@@ -16,7 +16,7 @@ map2={"length_of_map":"300", "height_of_map":"100", "number_of_balls":"5", "perc
 map3={"length_of_map":"400", "height_of_map":"100", "number_of_balls":"5", "percent_of_small_balls":"0.2", "percent_of_medium_balls":"0.4", "percent_of_large_balls":"0.2", "percent_of_extraLarge_balls":"0.2" }
 
 number_of_lives=3
-speed_of_player=2
+speed_of_player=8
 
 width_of_ray=3
 speed_of_ray=5
