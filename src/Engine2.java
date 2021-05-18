@@ -159,8 +159,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
         scaleX = (float)this.getWidth()/ width_of_frame;
         scaleY = (float)this.getHeight()/height_of_frame;
+        //collision with ball
         if(collision(hero)){
+            //timer.stop();
             timer.stop();
+            load_map(1);
         }
         repaint();
     }
