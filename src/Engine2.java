@@ -33,16 +33,20 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * @param height defines height of map
      */
     public Engine2(int width, int height, JFrame frame){
-        this.lives = ConfigData.number_of_lives;
         frame_g = frame;
+        width_of_frame = width;
+        height_of_frame = height;
+
         level_number = ConfigData.number_of_levels;
-        timer = new Timer(5, this);
+        lives = ConfigData.number_of_lives;
+
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+
+        timer = new Timer(5, this);
         timer.start();
-        width_of_frame = width;
-        height_of_frame = height;
+
         current_level = 0;
         load_map(0);
 
@@ -113,7 +117,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             ball_list_extra_large.add(new Ball_2D((float)(width_of_frame*j /number_of_extraLarge_balls),10,(float)ConfigData.radius_of_extraLarge_ball,(float) ConfigData.radius_of_extraLarge_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value));
         }
 
-        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);
+        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives + " " + "p-stop/play");
     }
 
     /***
@@ -156,6 +160,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         hero.movementOfHero(this);
+
         for (Ball_2D ele: ball_list_small) {
             ele.movement(this);
         }
@@ -200,7 +205,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-
         if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
             hero.velocity = (float) -ConfigData.speed_of_player;
             pressedKeys.add(key);
@@ -210,6 +214,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             hero.velocity = (float) ConfigData.speed_of_player ;
             pressedKeys.add(key);
             }
+
         if(key==KeyEvent.VK_P && timer.isRunning()){
             timer.stop();
             }else if(key==KeyEvent.VK_P && !timer.isRunning()){
