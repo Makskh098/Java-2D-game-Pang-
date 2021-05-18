@@ -141,6 +141,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     }
 
     public void gameOver(){
+        repaint();
         JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
         frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
     }
@@ -204,6 +205,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
         if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT){
             hero.velocity = (float) ConfigData.speed_of_player ;
+            pressedKeys.add(key);
             }
         if(key==KeyEvent.VK_P && timer.isRunning()){
             timer.stop();
@@ -229,8 +231,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             pressedKeys.remove(key);
 
         }
-
-
 
 
     }
