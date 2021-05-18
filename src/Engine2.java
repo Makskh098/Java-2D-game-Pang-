@@ -112,6 +112,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         for (int j = 0; j < number_of_extraLarge_balls; j++) {
             ball_list_extra_large.add(new Ball_2D((float)(width_of_frame*j /number_of_extraLarge_balls),10,(float)ConfigData.radius_of_extraLarge_ball,(float) ConfigData.radius_of_extraLarge_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value));
         }
+
+        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);
     }
 
     /***
@@ -142,6 +144,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     public void gameOver(){
         repaint();
+        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);
         JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
         frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
     }
