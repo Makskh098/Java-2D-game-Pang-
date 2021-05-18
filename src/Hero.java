@@ -43,6 +43,10 @@ public class Hero extends Rectangle {
         }
     }
 
+    public void looseLive(){
+        lives -= 1;
+    }
+
     /***
      * defines movement of hero
      * @param px is used to set hero's step in every frame

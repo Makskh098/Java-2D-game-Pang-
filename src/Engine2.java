@@ -11,16 +11,20 @@ import java.util.Set;
  */
 public class Engine2 extends JPanel implements ActionListener, KeyListener {
     Timer timer;
+    JFrame frame_g;
     ArrayList<Ball_2D> ball_list_small = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_medium = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_large = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_extra_large = new ArrayList<>();
     private final Set<Integer> pressedKeys = new HashSet<>();
     Hero hero;
+    int lives;
     int width_of_frame;
     int height_of_frame;
     private double scaleX = 1;
     private double scaleY = 1;
+    public int level_number;
+    public int current_level;
     //Ray ray;
 
     /***
@@ -28,7 +32,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * @param width defines width of map
      * @param height defines height of map
      */
-    public Engine2(int width, int height){
+    public Engine2(int width, int height, JFrame frame){
+        this.lives = ConfigData.number_of_lives;
+        frame_g = frame;
+        level_number = ConfigData.number_of_levels;
         timer = new Timer(5, this);
         addKeyListener(this);
         setFocusable(true);
@@ -36,6 +43,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         timer.start();
         width_of_frame = width;
         height_of_frame = height;
+        current_level = 0;
         load_map(0);
 
     }
@@ -85,7 +93,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         int number_of_medium_balls = (int)(map.number_of_balls* map.percent_of_medium_balls);
         int number_of_large_balls = (int)(map.number_of_balls* map.percent_of_large_balls);
         int number_of_extraLarge_balls = (int)(map.number_of_balls* map.percent_of_extraLarge_balls);
-        hero = new Hero((float) (width_of_frame/2 - 30/2), height_of_frame -30,30,30,ConfigData.number_of_lives, 0 ,Color.BLUE);
+        hero = new Hero((float) (width_of_frame/2 - 30/2), height_of_frame -30,30,30,lives, 0 ,Color.BLUE);
 
 
         ball_list_small.clear();
@@ -112,30 +120,30 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * @return boolean if true then it means any of ball intersects with object
      */
     public boolean collision(Rectangle hitbox){
-        boolean result=false;
+        boolean result;
         for (Ball_2D ele: ball_list_small) {
-            result=ele.intersects(hitbox);
-            if(result)
-            {return result;}
+            result = ele.intersects(hitbox);
+            if (result) {return true;}
         }
         for (Ball_2D ele: ball_list_medium) {
-            result=ele.intersects(hitbox);
-            if(result)
-            {return result;}
+            result = ele.intersects(hitbox);
+            if (result) {return true;}
         }
         for (Ball_2D ele: ball_list_large) {
-            result=ele.intersects(hitbox);
-            if(result)
-            {return result;}
+            result = ele.intersects(hitbox);
+            if (result) {return true;}
         }
         for (Ball_2D ele: ball_list_extra_large) {
-            result=ele.intersects(hitbox);
-            if(result)
-            {return result;}
+            result = ele.intersects(hitbox);
+            if (result) {return true;}
         }
-        return result;
+        return false;
     }
 
+    public void gameOver(){
+        JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
+        frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
+    }
 
     /***
      * Method calculates positions of objects in game every tact of timer
@@ -156,14 +164,19 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         for (Ball_2D ele: ball_list_extra_large) {
             ele.movement(this);
         }
-        scaleX = (float)this.getWidth()/ width_of_frame;
+        scaleX = (float)this.getWidth()/width_of_frame;
         scaleY = (float)this.getHeight()/height_of_frame;
-        //collision with ball
 
+        //collision with ball
         if(collision(hero)){
-            //timer.stop();
             timer.stop();
-            load_map(1);
+            lives -= 1;
+            if (lives != 0){
+                load_map(current_level);
+            }
+            else{
+                gameOver();
+            }
         }
         repaint();
     }
@@ -197,7 +210,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             }else if(key==KeyEvent.VK_P && !timer.isRunning()){
             timer.start();
         }
-
         }
 
 

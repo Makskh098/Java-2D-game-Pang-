@@ -108,8 +108,8 @@ public class Welcome_Screen extends JFrame implements ActionListener {
 //            frame.setLocation(this.getLocation().x,this.getLocation().y);
 //            frame.setContentPane(new Engine(640, 480));
 
-            frame.add(new Engine2(500,500));
-            frame.setSize(500, 500);
+            frame.add(new Engine2(700,700,frame));
+            frame.setSize(700, 700);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLocation(this.getLocation().x,this.getLocation().y);
             frame.setLocation(this.getLocation());
