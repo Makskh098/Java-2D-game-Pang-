@@ -188,7 +188,14 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT){
             hero.velocity = (float) ConfigData.speed_of_player ;
             }
+        if(key==KeyEvent.VK_P && timer.isRunning()){
+            timer.stop();
+            }else if(key==KeyEvent.VK_P && !timer.isRunning()){
+            timer.start();
         }
+
+        }
+
 
     /***
      * implements functionality of handled event of key listener
@@ -206,6 +213,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             pressedKeys.remove(key);
 
         }
+
+
 
 
     }
