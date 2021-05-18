@@ -70,7 +70,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
         g2d.setColor(Color.BLACK);
         g2d.fill(hero);
-
         g2d.dispose();
 
     }
@@ -159,6 +158,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
         scaleX = (float)this.getWidth()/ width_of_frame;
         scaleY = (float)this.getHeight()/height_of_frame;
+
         if(collision(hero)){
             timer.stop();
         }
@@ -179,10 +179,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        pressedKeys.add(key);
-        
+
+
         if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
             hero.velocity = (float) -ConfigData.speed_of_player;
+            pressedKeys.add(key);
             }
 
         if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT){
