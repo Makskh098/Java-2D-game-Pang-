@@ -1,7 +1,7 @@
 update_rate=120
 radius_of_extraLarge_ball=50
 max_speed_of_ball=5
-const_Xball_speed_value=2
+const_Xball_speed_value=0.5
 const_gravity_value=5
 points_for_extralarge_ball=10
 points_for_large_ball=5

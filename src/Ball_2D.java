@@ -7,7 +7,8 @@ import java.awt.geom.Ellipse2D;
 public class Ball_2D extends Ellipse2D.Float{
     public float speedx;
     public float speedy;
-
+    public double ball_dy;
+    double gravity = -0.01;
     /***
      * Constructor
      * @param x horizontal position
@@ -22,6 +23,7 @@ public class Ball_2D extends Ellipse2D.Float{
         super(x,y,width,height);
         this.speedx = speedx;
         this.speedy = speedy;
+        this.ball_dy = 0;
     }
 
     /***
@@ -36,7 +38,11 @@ public class Ball_2D extends Ellipse2D.Float{
 
         // changing position of ball- 1 step
         x += speedx;
-        y += speedy;
+
+        // gravity element
+        ball_dy -= gravity;
+        y += ball_dy;
+
 
         //Ball's movement inside borders of map
         // axis X
@@ -49,10 +55,10 @@ public class Ball_2D extends Ellipse2D.Float{
         }
         // axis Y
         if (y > BallMaxY) {
-            speedy = (-speedy); // reflection
+            ball_dy *= -1; // reflection
             y = BallMaxY;
         }  if (y < BallMinY) {
-            speedy = (-speedy); // reflection
+             // reflection
             y = BallMinY;
         }
     }
