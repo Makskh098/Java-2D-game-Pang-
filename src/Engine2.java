@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /***
  *  Class Engine2 implements game physics,movement of every object in game and graphic animations of those objects.Also it handles controls.
@@ -13,6 +15,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     ArrayList<Ball_2D> ball_list_medium = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_large = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_extra_large = new ArrayList<>();
+    private final Set<Integer> pressedKeys = new HashSet<>();
     Hero hero;
     int width_of_frame;
     int height_of_frame;
@@ -48,6 +51,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.scale(scaleX, scaleY);
+
         g2d.setColor(Color.MAGENTA);
         for (Ball_2D ele: ball_list_small) {
             g2d.fill(ele);
@@ -66,6 +70,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
         g2d.setColor(Color.BLACK);
         g2d.fill(hero);
+
         g2d.dispose();
 
     }
@@ -77,11 +82,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      */
     public void load_map(int i){
         ConfigMap map = ConfigData.List_of_Config_of_Maps.get(i);
-        int number_of_small_balls= (int)(map.number_of_balls* map.percent_of_small_balls);
-        int number_of_medium_balls=(int)(map.number_of_balls* map.percent_of_medium_balls);
-        int number_of_large_balls=(int)(map.number_of_balls* map.percent_of_large_balls);
-        int number_of_extraLarge_balls=(int)(map.number_of_balls* map.percent_of_extraLarge_balls);
-        hero = new Hero((float) (width_of_frame /2.0 - 30/2), height_of_frame -30,30,30,ConfigData.number_of_lives, 0 ,Color.BLUE);
+        int number_of_small_balls = (int)(map.number_of_balls* map.percent_of_small_balls);
+        int number_of_medium_balls = (int)(map.number_of_balls* map.percent_of_medium_balls);
+        int number_of_large_balls = (int)(map.number_of_balls* map.percent_of_large_balls);
+        int number_of_extraLarge_balls = (int)(map.number_of_balls* map.percent_of_extraLarge_balls);
+        hero = new Hero((float) (width_of_frame/2 - 30/2), height_of_frame -30,30,30,ConfigData.number_of_lives, 0 ,Color.BLUE);
 
 
         ball_list_small.clear();
@@ -127,14 +132,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     }
 
 
-
-    @Override
     /***
      * implements functionality of event of key listener
      */
-    public void keyTyped(KeyEvent e) {
-
-    }
+    @Override
+    public void keyTyped(KeyEvent e) {}
 
     /***
      * implements functionality of handled event of key listener
@@ -143,6 +145,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
+        pressedKeys.add(key);
+        
         if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT){
             hero.velocity = (float) -ConfigData.speed_of_player;
             }
@@ -156,11 +160,21 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * implements functionality of handled event of key listener
      * @param e Key Event
      */
+    @Override
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-        hero.velocity = 0;
+        if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT ){
+            if (pressedKeys.size() > 1){
+                pressedKeys.clear();
+                return; }
+            hero.velocity = 0;
+            pressedKeys.remove(key);
+
         }
+
+
+    }
 
 
 }
