@@ -8,7 +8,7 @@ public class Ball_2D extends Ellipse2D.Float{
     public float speedx;
     public float speedy;
     public double ball_dy;
-    double gravity = -0.01;
+    double gravity = -0.05;
     /***
      * Constructor
      * @param x horizontal position

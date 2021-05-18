@@ -108,6 +108,37 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     }
 
     /***
+     * Method collision detects if any of ball on the map intersects with certain object
+     * @param hitbox holds object that will be checked if intersects with balls
+     * @return boolean if true then it means any of ball intersects with object
+     */
+    public boolean collision(Rectangle hitbox){
+        boolean result=false;
+        for (Ball_2D ele: ball_list_small) {
+            result=ele.intersects(hitbox);
+            if(result)
+            {return result;}
+        }
+        for (Ball_2D ele: ball_list_medium) {
+            result=ele.intersects(hitbox);
+            if(result)
+            {return result;}
+        }
+        for (Ball_2D ele: ball_list_large) {
+            result=ele.intersects(hitbox);
+            if(result)
+            {return result;}
+        }
+        for (Ball_2D ele: ball_list_extra_large) {
+            result=ele.intersects(hitbox);
+            if(result)
+            {return result;}
+        }
+        return result;
+    }
+
+
+    /***
      * Method calculates positions of objects in game every tact of timer
      * @param e actionEvent for example step of timer
      */
@@ -128,6 +159,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
         scaleX = (float)this.getWidth()/ width_of_frame;
         scaleY = (float)this.getHeight()/height_of_frame;
+        if(collision(hero)){
+            timer.stop();
+        }
         repaint();
     }
 
