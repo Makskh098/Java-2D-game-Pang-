@@ -1,0 +1,6 @@
+Nadal brak skryptów do kompilacji/uruchomienia poza IDE,
+co jest szczególnie istotne, gdyż wykorzystywana jest dodatkowa/zewnętrzna biblioteka - 
+i co w sytuacji, gdy jej nie ma na komputerze, na których gra jest uruchamiana?
+
+ale... animacja jest, 
+etap zaliczony.  
