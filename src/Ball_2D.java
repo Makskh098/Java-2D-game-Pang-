@@ -56,15 +56,20 @@ public class Ball_2D extends Ellipse2D.Float{
         if (x > BallMaxX) {
             speedx = (-speedx); // reflection
             x = BallMaxX;
-        }  if (x < BallMinX) {
+        }
+
+        if (x < BallMinX) {
             speedx= (-speedx); // reflection
             x = BallMinX;
         }
+
         // axis Y
         if (y > BallMaxY) {
             ball_dy *= -1; // reflection
             y = BallMaxY;
-        }  if (y < BallMinY) {
+        }
+
+        if (y < BallMinY) {
              // reflection
             y = BallMinY;
         }

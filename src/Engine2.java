@@ -64,7 +64,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         g2d.scale(scaleX, scaleY);
 
-
         g2d.setColor(Color.YELLOW);
         for (Ball_2D ele: ball_list_extra_large) {
             g2d.fill(ele);
@@ -92,7 +91,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
-
     /***
      * Method is responsible for creating objects that will appear on map, it loads Configuration data from ConfigMap and creates individual objects
      * @param i this parameter describes which stage is currently loaded
@@ -107,7 +105,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         hero = new Hero((float) (width_of_frame/2 - 30/2), height_of_frame -30,30,30,lives, 0 ,Color.BLUE);
 
         ray = new Ray((float) (width_of_frame/2 - 30/2), height_of_frame ,10,this.height_of_frame,5);
-
 
         ball_list_small.clear();
         for (int j = 0; j < number_of_small_balls; j++) {
@@ -157,7 +154,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
 
     /***
-     * function to check collision whit ray and balls. If ray hits ball, ball splits to smaller balls or disappear if is small_ball.
+     * function to check collision whit ray and balls. If ray hits ball, balls splits to smaller balls or disappear if are small_balls.
      * @param hitbox ray
      */
     public void collisionRay(Rectangle hitbox){
@@ -165,7 +162,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             if ( ele.intersects(hitbox) ) {
                 ball_list_small.remove(ele);
                 ray.reset(this);
-                return;}
+                return;
+            }
         }
         for (Ball_2D ele: ball_list_medium) {
             if ( ele.intersects(hitbox) ) {
@@ -175,7 +173,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_small.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_small_ball,(float) ConfigData.radius_of_small_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
 
                 ray.reset(this);
-                return;}
+                return;
+            }
         }
         for (Ball_2D ele: ball_list_large) {
             if ( ele.intersects(hitbox) ) {
@@ -185,7 +184,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_medium.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_medium_ball,(float) ConfigData.radius_of_medium_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value,(int) ele.ball_dy));
 
                 ray.reset(this);
-                return;}
+                return;
+            }
         }
         for (Ball_2D ele: ball_list_extra_large) {
             if ( ele.intersects(hitbox) ) {
@@ -195,7 +195,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_large.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_large_ball,(float) ConfigData.radius_of_large_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
 
                 ray.reset(this);
-                return;}
+                return;
+            }
         }
 
     }
@@ -253,7 +254,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         repaint();
     }
 
-
     /***
      * implements functionality of event of key listener
      */
@@ -288,7 +288,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             ray.shoot();
         }
 
-        }
+    }
 
 
     /***
@@ -305,9 +305,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 return; }
             hero.velocity = 0;
             pressedKeys.remove(key);
-
         }
-
 
     }
 
