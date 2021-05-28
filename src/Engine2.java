@@ -152,6 +152,17 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
+    public void loadNext(){
+        if (ball_list_small.isEmpty() && ball_list_medium.isEmpty() && ball_list_large.isEmpty() && ball_list_extra_large.isEmpty()) {
+            if (level_number == current_level){
+               return;
+            }
+            load_map(current_level + 1);
+            current_level += 1;
+            this.timer.stop();
+
+        }
+    }
 
     /***
      * function to check collision whit ray and balls. If ray hits ball, balls splits to smaller balls or disappear if are small_balls.
@@ -251,6 +262,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 gameOver();
             }
         }
+
+        loadNext();
+
         repaint();
     }
 
