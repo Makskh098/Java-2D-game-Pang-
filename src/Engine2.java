@@ -262,7 +262,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 gameOver();
             }
         }
-
+        // loads next stage if stage is empty of balls
         loadNext();
 
         repaint();
