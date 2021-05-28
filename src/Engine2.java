@@ -290,7 +290,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
-
     /***
      * implements functionality of handled event of key listener
      * @param e Key Event
@@ -308,6 +307,5 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         }
 
     }
-
 
 }
