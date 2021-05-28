@@ -30,9 +30,7 @@ public class Hero extends Rectangle {
      */
     public void movementOfHero(Engine2 engine) {
         float heroMinX = (float) 0;
-        float heroMinY = this.height;
         float heroMaxX = (float) (engine.width_of_frame - this.width);
-        float heroMaxY = engine.height_of_frame - this.height;
 
         move((int) velocity);
         if (this.x > (int) heroMaxX) {
@@ -41,10 +39,6 @@ public class Hero extends Rectangle {
         if (this.x < (int) heroMinX) {
             this.x = (int) heroMinX;
         }
-    }
-
-    public void looseLive(){
-        lives -= 1;
     }
 
     /***
