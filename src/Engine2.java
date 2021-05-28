@@ -155,6 +155,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         return false;
     }
 
+
+    /***
+     * function to check collision whit ray and balls. If ray hits ball, ball splits to smaller balls or disappear if is small_ball.
+     * @param hitbox ray
+     */
     public void collisionRay(Rectangle hitbox){
         for (Ball_2D ele: ball_list_small) {
             if ( ele.intersects(hitbox) ) {
@@ -195,6 +200,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
+    /***
+     * Game Over
+     */
     public void gameOver(){
         repaint();
         frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);

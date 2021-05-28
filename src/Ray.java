@@ -7,11 +7,17 @@ public class Ray extends Rectangle {
     public Ray(float x, float y, float width, float height, float velocity){
         super((int) x , (int) y + 1, (int) width, (int) height);
         this.velocity = velocity;
-
     }
 
+    /***
+     * set shoot to true
+     */
     public void shoot(){shoot = true;}
 
+    /***
+     * implements movement of ray
+     * @param engine Engine2 object
+     */
     public void movementOfRay(Engine2 engine){
 
         if (!this.shoot){ return;}
@@ -34,8 +40,12 @@ public class Ray extends Rectangle {
 
     }
 
+    /***
+     * resets ray position
+     * @param engine Engine2
+     */
     public void reset(Engine2 engine){
         y = engine.height_of_frame + 1; // move below frame
-        this.shoot = false; // block shoot
+        this.shoot = false; // blocks shoot
     }
 }

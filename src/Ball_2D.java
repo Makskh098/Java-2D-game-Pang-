@@ -25,6 +25,7 @@ public class Ball_2D extends Ellipse2D.Float{
         this.speedy = speedy;
         this.ball_dy = 0;
     }
+
     public Ball_2D(float x, float y, float height, float width,float speedx, float speedy, int ball_dy){
         super(x,y,width,height);
         this.speedx = speedx;
