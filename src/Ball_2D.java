@@ -26,14 +26,21 @@ public class Ball_2D extends Ellipse2D.Float{
         this.ball_dy = 0;
     }
 
+    public Ball_2D(float x, float y, float height, float width,float speedx, float speedy, int ball_dy){
+        super(x,y,width,height);
+        this.speedx = speedx;
+        this.speedy = speedy;
+        this.ball_dy = ball_dy;
+    }
+
     /***
      * Implements movement of ball
      * @param engine engine where ball i used to get width and height of Jframe
      */
     public void movement(Engine2 engine) {
         float BallMinX = (float) 0;
-        float BallMinY = this.height;
-        float BallMaxX = (engine.width_of_frame - this.width);
+        float BallMinY = 10;
+        float BallMaxX = engine.width_of_frame - this.width;
         float BallMaxY = engine.height_of_frame - this.height;
 
         // changing position of ball- 1 step
@@ -49,15 +56,20 @@ public class Ball_2D extends Ellipse2D.Float{
         if (x > BallMaxX) {
             speedx = (-speedx); // reflection
             x = BallMaxX;
-        }  if (x < BallMinX) {
+        }
+
+        if (x < BallMinX) {
             speedx= (-speedx); // reflection
             x = BallMinX;
         }
+
         // axis Y
         if (y > BallMaxY) {
             ball_dy *= -1; // reflection
             y = BallMaxY;
-        }  if (y < BallMinY) {
+        }
+
+        if (y < BallMinY) {
              // reflection
             y = BallMinY;
         }

@@ -11,12 +11,12 @@ points_for_small_ball=3
 
 
 number_of_levels=3
-map1={"length_of_map":"200", "height_of_map":"100", "number_of_balls":"5", "percent_of_small_balls":"0.2", "percent_of_medium_balls":"0.4", "percent_of_large_balls":"0.2", "percent_of_extraLarge_balls":"0.2" }
+map1={"length_of_map":"200", "height_of_map":"100", "number_of_balls":"1", "percent_of_small_balls":"0", "percent_of_medium_balls":"0", "percent_of_large_balls":"0", "percent_of_extraLarge_balls":"1" }
 map2={"length_of_map":"300", "height_of_map":"100", "number_of_balls":"10", "percent_of_small_balls":"0", "percent_of_medium_balls":"0.8", "percent_of_large_balls":"0.2", "percent_of_extraLarge_balls":"0" }
 map3={"length_of_map":"400", "height_of_map":"100", "number_of_balls":"5", "percent_of_small_balls":"0.2", "percent_of_medium_balls":"0.4", "percent_of_large_balls":"0.2", "percent_of_extraLarge_balls":"0.2" }
 
 number_of_lives=3
-speed_of_player=8
+speed_of_player=4
 
 width_of_ray=3
 speed_of_ray=5
