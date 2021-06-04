@@ -1,0 +1,23 @@
+"dane są przesyłane plikami typu JSON"
+
+nie PLIKAMI!!! nie przesyłane są pliki, tylko dane!
+...dane sa przesyłane w formacie JSON.
+
+"Przykładowa funkcjonalność:"
+
+Jaka przykładowa??? To ma być KONKRETNY protokół :-(
+
+"-getConfigData Klient prosi serwer o wysłanie plików konfiguracyjnych"
+
+??? Jak to się ma do deklaracji o JSON??? To co ja mam tu wysłać (dokładnie!!!) aby serwer mi odpowiedział???
+
+"-updateLeaderboards Klient wysyła serwerowi wynik gracza. Serwer zależnie od wyniku modyfikuje listę najlepszych wyników."
+
+ponownie ??? Gdzie w tym komunikacie mam zamieścić ten "wynik gracza"??? A czy nazwę gracza też mam podać???
+
+I co dostaję jako wynik od serwera? pewnie obiekt JSON  ;-) ale jaka jest jego struktura?
+Opis ma być taki, abym mógł SAMODZIELNIE napisać aplikację, która porozumie się z Waszym serwerem...
+
+Etap niezaliczony - protokół wymaga poprawy (proszę obejrzeć przykłądowy protokół z wykładu - pod kątem opisu struktury i parametrów, nie tego jakie tam sa komunikaty - te co są tu wymienione wyglądają wystarczająco)
+Jeśli dostanę szybko wersję poprawioną (proszę o informację, aktualizacji repozytorium "nie zauważę") to wycofam "-5"
+
