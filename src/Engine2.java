@@ -27,6 +27,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public int current_level;
     Ray ray;
 
+    PointCounter pointCounter= new PointCounter();
+    Leaderboard leaderboard=new Leaderboard();
+
     /***
      *  Constructor of Class Engine2
      * @param width defines width of map
@@ -173,6 +176,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             if ( ele.intersects(hitbox) ) {
                 ball_list_small.remove(ele);
                 ray.reset(this);
+                pointCounter.increasePoints(ConfigData.points_for_small_ball);
                 return;
             }
         }
@@ -183,6 +187,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_small.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_small_ball,(float) ConfigData.radius_of_small_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
                 ball_list_small.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_small_ball,(float) ConfigData.radius_of_small_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
 
+                pointCounter.increasePoints(ConfigData.points_for_medium_ball);
                 ray.reset(this);
                 return;
             }
@@ -194,6 +199,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_medium.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_medium_ball,(float) ConfigData.radius_of_medium_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
                 ball_list_medium.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_medium_ball,(float) ConfigData.radius_of_medium_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value,(int) ele.ball_dy));
 
+                pointCounter.increasePoints(ConfigData.points_for_large_ball);
                 ray.reset(this);
                 return;
             }
@@ -205,6 +211,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 ball_list_large.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_large_ball,(float) ConfigData.radius_of_large_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
                 ball_list_large.add(new Ball_2D(ele.x, ele.y, (float)ConfigData.radius_of_large_ball,(float) ConfigData.radius_of_large_ball,(float) -ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value, (int) ele.ball_dy));
 
+                pointCounter.increasePoints(ConfigData.points_for_extralarge_ball);
                 ray.reset(this);
                 return;
             }
@@ -218,7 +225,16 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public void gameOver(){
         repaint();
         frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);
-        JOptionPane.showMessageDialog(this, "Game Over", "", JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(this, "Game Over \n Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
+
+        String Nick=JOptionPane.showInputDialog(this,"Podaj Nick: ");
+        leaderboard.add_score(Nick,pointCounter.getCurrentPoints());
+        //Dodac dodawanie do Leaderboarda
+
+
+
+        pointCounter.resetPoints();
         frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
     }
 
