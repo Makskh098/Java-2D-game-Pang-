@@ -28,17 +28,18 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     Ray ray;
 
     PointCounter pointCounter= new PointCounter();
-    Leaderboard leaderboard=new Leaderboard();
+    Leaderboard leaderboard;
 
     /***
      *  Constructor of Class Engine2
      * @param width defines width of map
      * @param height defines height of map
      */
-    public Engine2(int width, int height, JFrame frame){
+    public Engine2(int width, int height, JFrame frame,Leaderboard leaderboard){
         frame_g = frame;
         width_of_frame = width;
         height_of_frame = height;
+        this.leaderboard=leaderboard;
 
         level_number = ConfigData.number_of_levels;
         lives = ConfigData.number_of_lives;
@@ -229,9 +230,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         JOptionPane.showMessageDialog(this, "Game Over \n Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
 
         String Nick=JOptionPane.showInputDialog(this,"Podaj Nick: ");
+        leaderboard.load_leaderboard();
         leaderboard.add_score(Nick,pointCounter.getCurrentPoints());
         //Dodac dodawanie do Leaderboarda
-
+        leaderboard.save_leaderboard();
 
 
         pointCounter.resetPoints();
