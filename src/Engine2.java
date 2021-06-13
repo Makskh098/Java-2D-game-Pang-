@@ -44,6 +44,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         level_number = ConfigData.number_of_levels;
         lives = ConfigData.number_of_lives;
 
+
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -91,6 +92,13 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         g2d.setColor(Color.RED);
         g2d.fill(ray);
 
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Level: " + (current_level+1),this.width_of_frame - 80,20 );
+        g2d.drawString("Lives: " + lives,this.width_of_frame - 80,40 );
+        g2d.drawString("Score: " + pointCounter.getCurrentPoints(),this.width_of_frame - 80,60);
+        g2d.drawString("'P' - pause",this.width_of_frame - 80,80 );
+
+
         g2d.dispose();
 
     }
@@ -127,7 +135,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             ball_list_extra_large.add(new Ball_2D((float)(width_of_frame*j /number_of_extraLarge_balls),10,(float)ConfigData.radius_of_extraLarge_ball,(float) ConfigData.radius_of_extraLarge_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value));
         }
 
-        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives + " " + "p-stop/play");
+
     }
 
     /***
@@ -164,7 +172,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             load_map(current_level + 1);
             current_level += 1;
             this.timer.stop();
-
         }
     }
 
@@ -225,13 +232,15 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      */
     public void gameOver(){
         repaint();
-        frame_g.setTitle("Level-" + (current_level+1) + " " + "Lives-" + lives);
 
         JOptionPane.showMessageDialog(this, "Game Over \n Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
 
-        String Nick=JOptionPane.showInputDialog(this,"Podaj Nick: ");
+        String nick = JOptionPane.showInputDialog(this,"Podaj Nick: ");
+        if (nick.equals("")){
+            nick = "Anonim";
+        }
         leaderboard.load_leaderboard();
-        leaderboard.add_score(Nick,pointCounter.getCurrentPoints());
+        leaderboard.add_score(nick,pointCounter.getCurrentPoints());
         //Dodac dodawanie do Leaderboarda
         leaderboard.save_leaderboard();
 

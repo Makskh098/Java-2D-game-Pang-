@@ -8,8 +8,6 @@ public class Main {
 
     /***
      * main function to start game
-     * @param args
-     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
 
