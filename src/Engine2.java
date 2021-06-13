@@ -30,6 +30,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     PointCounter pointCounter= new PointCounter();
     Leaderboard leaderboard;
 
+
     /***
      *  Constructor of Class Engine2
      * @param width defines width of map
@@ -49,11 +50,12 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
 
-        timer = new Timer(5, this);
+        timer = new Timer(1, this);
         timer.start();
 
         current_level = 0;
         load_map(0);
+
 
     }
 
