@@ -60,7 +60,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         //text
         welcome_text = "MENU" +
                 "<br>" +
-                "Janek to dobry ziom";
+                "PANG";
         String text = "<html><div style='text-algin: center;'>" + welcome_text + "</div></html";
 
 

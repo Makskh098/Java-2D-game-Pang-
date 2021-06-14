@@ -16,6 +16,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     ArrayList<Ball_2D> ball_list_medium = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_large = new ArrayList<>();
     ArrayList<Ball_2D> ball_list_extra_large = new ArrayList<>();
+    PowerUP powerUP;
     private final Set<Integer> pressedKeys = new HashSet<>();
     Hero hero;
     int lives;
@@ -50,7 +51,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
 
-        timer = new Timer(1, this);
+        timer = new Timer(5, this);
         timer.start();
 
         current_level = 0;
@@ -94,6 +95,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         g2d.setColor(Color.RED);
         g2d.fill(ray);
 
+        g2d.setColor(Color.darkGray);
+        g2d.fill(powerUP);
+
         g2d.setColor(Color.BLACK);
         g2d.drawString("Level: " + (current_level+1),this.width_of_frame - 80,20 );
         g2d.drawString("Lives: " + lives,this.width_of_frame - 80,40 );
@@ -136,6 +140,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         for (int j = 0; j < number_of_extraLarge_balls; j++) {
             ball_list_extra_large.add(new Ball_2D((float)(width_of_frame*j /number_of_extraLarge_balls),10,(float)ConfigData.radius_of_extraLarge_ball,(float) ConfigData.radius_of_extraLarge_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value));
         }
+
+        powerUP = new PowerUP(0, 20,20,2);
 
 
     }
@@ -229,6 +235,16 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
+    public boolean powerUP_collision(Rectangle hitbox){
+        return powerUP.intersects(hitbox);
+    }
+
+    public void spawn_powerUP(){
+        if (pointCounter.getCurrentPoints() % 10 == 0 && pointCounter.getCurrentPoints()>0){
+            powerUP.spawn((int) (Math.random()*this.width_of_frame), 5);
+        }
+    }
+
     /***
      * Game Over
      */
@@ -274,11 +290,20 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
         ray.movementOfRay(this);
 
+        spawn_powerUP();
+        powerUP.move(this);
+
         scaleX = (float)this.getWidth()/width_of_frame;
         scaleY = (float)this.getHeight()/height_of_frame;
 
         //collision with ball and ray
         collisionRay(ray);
+
+        // collision with power_UP
+        if(powerUP_collision(hero)){
+            ray.width += 10;
+            powerUP.reset_position();
+        }
 
         //collision with ball and hero
         if(collision(hero)){
