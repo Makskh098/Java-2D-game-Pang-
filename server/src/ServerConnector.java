@@ -1,11 +1,8 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerConnector extends Thread{
+public class ServerConnector extends Thread implements Serializable{
     Socket s;
     ObjectOutputStream oos;
 
@@ -18,11 +15,14 @@ public class ServerConnector extends Thread{
         configLoad= new ConfigLoad();
         data = new ConfigData();
         configLoad.load("server/config/remoteConfigData.txt");
-       // System.out.println(data);
-
-        oos=new ObjectOutputStream(s.getOutputStream());
-        oos.writeObject(data);
-        oos.flush();
+        PrintWriter pr = new PrintWriter(s.getOutputStream());
+        pr.println(data.toString());
+      //  System.out.println(data);
+       // System.out.println("sending Config Data");
+       // OutputStream out=s.getOutputStream();
+       // oos=new ObjectOutputStream(out);//s.getOutputStream()
+       // oos.writeObject(data);
+        pr.flush();
     }
 
 
@@ -43,9 +43,6 @@ public class ServerConnector extends Thread{
                 case "give me ConfigData plx":
                     System.out.println("server : request accepted sending ConfigData");
                     sendConfigData();
-                    break;
-                case "give me ConfigMap plx":
-                    System.out.println("server : request accepted sending ConfigMap");
                     break;
                 case "give me Leaderboard plx":
                     System.out.println("server : request accepted sending Leaderboar");

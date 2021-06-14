@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ConfigData implements Serializable {
+public class ConfigData implements Serializable{
     /***
      * ConfigData, static class to store configuration data
      */
@@ -67,5 +67,6 @@ public class ConfigData implements Serializable {
 
         return res.toString();
     }
+
 
 }

@@ -1,12 +1,10 @@
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
-public class ClientManager {
+public class ClientManager implements Serializable {
 Socket s;
 ObjectInputStream ois;
-ConfigData localData;
+ConfigLoad configLoad;
     public ClientManager() throws IOException {
 //        s = new Socket("localhost", 8989);
 //        PrintWriter pr = new PrintWriter(s.getOutputStream());
@@ -22,18 +20,33 @@ ConfigData localData;
         pr.flush();
 
     }
-    public void getConfigData() throws IOException, ClassNotFoundException {
-        ois = new ObjectInputStream(s.getInputStream());
-        localData=(ConfigData)ois.readObject();
+    public void getConfigData() throws IOException{
+       // ois = new ObjectInputStream(s.getInputStream());
+        //localData=(ConfigData)ois.readObject();
+        try {
+            InputStreamReader in = new InputStreamReader(s.getInputStream());
+            BufferedReader bf = new BufferedReader(in);
+            FileWriter myWriter = new FileWriter("config/configDataServer.txt");
+            String request=bf.readLine();
+            for (int i = 0; i <=(int)','/2; i++){
+                System.out.println("("+request+")");
+                myWriter.write(request+"\n");
+                request = bf.readLine();
+                System.out.println("ss");
+            }
+            bf.close();
+            myWriter.close();
+            configLoad = new ConfigLoad();
+            configLoad.load("config/configDataServer.txt");
+
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    public void askForConfigMap() throws IOException {
-        s = new Socket("127.0.0.1", 8989);
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("give me ConfigMap plx");
-        pr.flush();
 
-    }
     public void askForLeaderboard() throws IOException {
         s = new Socket("127.0.0.1", 8989);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
