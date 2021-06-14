@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ConfigData {
+public class ConfigData implements Serializable {
     /***
      * ConfigData, static class to store configuration data
      */

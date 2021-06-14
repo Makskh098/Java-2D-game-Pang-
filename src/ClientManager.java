@@ -1,9 +1,12 @@
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ClientManager {
 Socket s;
+ObjectInputStream ois;
+ConfigData localData;
     public ClientManager() throws IOException {
 //        s = new Socket("localhost", 8989);
 //        PrintWriter pr = new PrintWriter(s.getOutputStream());
@@ -17,6 +20,11 @@ Socket s;
         PrintWriter pr = new PrintWriter(s.getOutputStream());
         pr.println("give me ConfigData plx");
         pr.flush();
+
+    }
+    public void getConfigData() throws IOException, ClassNotFoundException {
+        ois = new ObjectInputStream(s.getInputStream());
+        localData=(ConfigData)ois.readObject();
 
     }
     public void askForConfigMap() throws IOException {
