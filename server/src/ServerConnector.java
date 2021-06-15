@@ -8,6 +8,7 @@ public class ServerConnector extends Thread implements Serializable{
 
     ConfigLoad configLoad;
     ConfigData data;
+    Leaderboard leaderboard;
 
 
 
@@ -23,6 +24,16 @@ public class ServerConnector extends Thread implements Serializable{
        // oos=new ObjectOutputStream(out);//s.getOutputStream()
        // oos.writeObject(data);
         pr.flush();
+    }
+    public void sendLeaderBoars() throws IOException{
+        leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
+        leaderboard.load_leaderboard();
+        PrintWriter pr= new PrintWriter(s.getOutputStream());
+                            System.out.println(leaderboard.send_string());
+        pr.println(leaderboard.send_string());
+       // System.out.println(leaderboard.send_string());
+        pr.flush();
+
     }
 
 
@@ -46,6 +57,7 @@ public class ServerConnector extends Thread implements Serializable{
                     break;
                 case "give me Leaderboard plx":
                     System.out.println("server : request accepted sending Leaderboar");
+                    sendLeaderBoars();
                     break;
                 case "save my leaderboards plx":
                     System.out.println("server : request accepted downloading leaderboar");

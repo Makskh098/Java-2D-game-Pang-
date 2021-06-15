@@ -1,10 +1,15 @@
 import java.io.*;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.util.Scanner;
 
 public class ClientManager implements Serializable {
 Socket s;
 ObjectInputStream ois;
 ConfigLoad configLoad;
+
+
+
     public ClientManager() throws IOException {
 //        s = new Socket("localhost", 8989);
 //        PrintWriter pr = new PrintWriter(s.getOutputStream());
@@ -21,30 +26,42 @@ ConfigLoad configLoad;
 
     }
     public void getConfigData() throws IOException{
-       // ois = new ObjectInputStream(s.getInputStream());
-        //localData=(ConfigData)ois.readObject();
         try {
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             BufferedReader bf = new BufferedReader(in);
             FileWriter myWriter = new FileWriter("config/configDataServer.txt");
             String request=bf.readLine();
-            for (int i = 0; i <=(int)','/2; i++){
-                System.out.println("("+request+")");
+           // for (int i = 0; i <=(int)','/2; i++)//jestem dumny z tego rozwiązania więc prosze nie usuwać !!!_Maks
+            while (!request.isEmpty()){
                 myWriter.write(request+"\n");
                 request = bf.readLine();
-                System.out.println("ss");
             }
             bf.close();
             myWriter.close();
             configLoad = new ConfigLoad();
             configLoad.load("config/configDataServer.txt");
-
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+    public void getServerLeaderBoard() throws IOException{
+        try {
+            InputStreamReader in = new InputStreamReader(s.getInputStream());
+            BufferedReader bf = new BufferedReader(in);
+            FileWriter myWriter = new FileWriter("leaderboard/test.csv");
+            String request = bf.readLine();
+            while (!request.isEmpty()){
+                myWriter.write(request + "\n");
+                request = bf.readLine();
+            }
+            bf.close();
+            myWriter.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void askForLeaderboard() throws IOException {
@@ -61,5 +78,7 @@ ConfigLoad configLoad;
         pr.flush();
 
     }
+
+
 
 }

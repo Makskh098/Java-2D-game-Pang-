@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 
 public class Welcome_Screen extends JFrame implements ActionListener {
@@ -14,8 +15,8 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private JScrollPane scroll;
     private JPanel box;
     private String welcome_text;
-    private final Leaderboard ld = new Leaderboard();
-
+   // private final Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
+   private final Leaderboard ld = new Leaderboard( "leaderboard/test.csv");
     /***
      * Method that creates main menu window of the game
      */
@@ -86,6 +87,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         String action = ae.getActionCommand();
+
 
         if (action.equals("credits")) {
             JOptionPane.showMessageDialog(this, "Jan Bronowski and Maks K.", "Credits", JOptionPane.INFORMATION_MESSAGE);

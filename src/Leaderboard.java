@@ -8,7 +8,12 @@ public class Leaderboard {
      */
 
     public ArrayList<Pair<String,Integer>> leader_board_list = new ArrayList<>();
-    private final String file_path = "leaderboard/leaderboard.csv";
+    private final String file_path;
+
+
+    public Leaderboard(String file_path){
+        this.file_path=file_path;
+    }
 
     /***
      * adds score to leaderBoard
@@ -49,6 +54,17 @@ public class Leaderboard {
         int i=1;
         for (Pair<String,Integer> ele: this.leader_board_list) {
             text.append(i).append(".    ").append(ele.getElement0()).append("    ").append(ele.getElement1()).append('\n');
+            i += 1;
+        }
+
+        return text.toString();
+    }
+    public String send_string(){
+        StringBuilder text = new StringBuilder();
+        sort();
+        int i=1;
+        for (Pair<String,Integer> ele: this.leader_board_list) {
+            text.append(ele.getElement0()).append(",").append(ele.getElement1()).append('\n');
             i += 1;
         }
 

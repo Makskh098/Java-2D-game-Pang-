@@ -25,6 +25,15 @@ public class Main {
 /***
  * No i nie działa :(
  */
+
+      // Leaderboard ld = new Leaderboard( "leaderboard/Leaderboard.csv");
+     //  ld.load_leaderboard();
+
+//        ClientManager clientManager=new ClientManager();
+//        clientManager.askForLeaderboard();
+//        clientManager.getServerLeaderBoard();
+
+        //System.out.println(ld.send_string());
         try {
            // ConfigData data;
 
@@ -33,6 +42,10 @@ public class Main {
             clientManager.askForConfigData();
             clientManager.getConfigData();
 
+
+            clientManager.askForLeaderboard();
+            clientManager.getServerLeaderBoard();
+           // System.out.println(clientManager.getServerLeaderBoard());
 
 
            // data=clientManager.localData;
