@@ -10,3 +10,14 @@ points_for_extralarge_ball=10
 points_for_large_ball=5
 points_for_medium_ball=3
 points_for_small_ball=3
+
+number_of_levels=3
+map1={length_of_map=300.0, height_of_map=100.0, number_of_balls=10, position_of_player=150.0, percent_of_small_balls=0.0, percent_of_medium_balls=0.8, percent_of_large_balls=0.2, percent_of_extraLarge_balls=0.0}
+map2={length_of_map=200.0, height_of_map=100.0, number_of_balls=1, position_of_player=100.0, percent_of_small_balls=0.0, percent_of_medium_balls=0.0, percent_of_large_balls=0.0, percent_of_extraLarge_balls=1.0}
+map3={length_of_map=400.0, height_of_map=100.0, number_of_balls=5, position_of_player=200.0, percent_of_small_balls=0.2, percent_of_medium_balls=0.4, percent_of_large_balls=0.2, percent_of_extraLarge_balls=0.2}
+
+number_of_lives=5
+speed_of_player=4.0
+
+width_of_ray=3.0
+speed_of_ray=5.0

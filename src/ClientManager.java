@@ -31,8 +31,8 @@ ConfigLoad configLoad;
             BufferedReader bf = new BufferedReader(in);
             FileWriter myWriter = new FileWriter("config/configDataServer.txt");
             String request=bf.readLine();
-           // for (int i = 0; i <=(int)','/2; i++)//jestem dumny z tego rozwiązania więc prosze nie usuwać !!!_Maks
-            while (!request.isEmpty()){
+           for (int i = 0; i <=(int)','/2; i++){//jestem dumny z tego rozwiązania więc prosze nie usuwać !!!_Maks
+           // while (!request.isEmpty()){
                 myWriter.write(request+"\n");
                 request = bf.readLine();
             }
@@ -64,6 +64,7 @@ ConfigLoad configLoad;
         }
     }
 
+
     public void askForLeaderboard() throws IOException {
         s = new Socket("127.0.0.1", 8989);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
@@ -78,6 +79,16 @@ ConfigLoad configLoad;
         pr.flush();
 
     }
+//    public void sendlocalLeaderBoars(Leaderboard leaderboard) throws IOException{
+//        //leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
+//        leaderboard.load_leaderboard();
+//        PrintWriter pr= new PrintWriter(s.getOutputStream());
+//        System.out.println(leaderboard.send_string());
+//        pr.println(leaderboard.send_string());
+//        // System.out.println(leaderboard.send_string());
+//        pr.flush();
+//
+//    }
 
 
 
