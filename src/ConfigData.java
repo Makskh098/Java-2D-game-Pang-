@@ -53,15 +53,15 @@ public class ConfigData implements Serializable{
         res.append("points_for_large_ball=").append(points_for_large_ball).append("\n");
         res.append("points_for_medium_ball=").append(points_for_medium_ball).append("\n");
         res.append("points_for_small_ball=").append(points_for_small_ball).append("\n");
-        res.append("\n");
+        //res.append("\n");
         res.append("number_of_levels=").append(number_of_levels).append("\n");
         for (int i = 0; i < number_of_levels; i++) {
             res.append("map").append(i+1).append("=").append(List_of_Config_of_Maps.get(i).toString()).append("\n");
         }
-        res.append("\n");
+       // res.append("\n");
         res.append("number_of_lives=").append(number_of_lives).append("\n");
         res.append("speed_of_player=").append(speed_of_player).append("\n");
-        res.append("\n");
+        //res.append("\n");
         res.append("width_of_ray=").append(width_of_ray).append("\n");
         res.append("speed_of_ray=").append(speed_of_ray).append("\n");
 

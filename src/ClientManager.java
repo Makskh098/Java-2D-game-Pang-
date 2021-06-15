@@ -31,8 +31,8 @@ ConfigLoad configLoad;
             BufferedReader bf = new BufferedReader(in);
             FileWriter myWriter = new FileWriter("config/configDataServer.txt");
             String request=bf.readLine();
-           for (int i = 0; i <=(int)','/2; i++){//jestem dumny z tego rozwiązania więc prosze nie usuwać !!!_Maks
-           // while (!request.isEmpty()){
+          // for (int i = 0; i <=(int)','/2; i++){//jestem dumny z tego rozwiązania więc prosze nie usuwać !!!_Maks
+            while (!request.isEmpty()){
                 myWriter.write(request+"\n");
                 request = bf.readLine();
             }
@@ -80,7 +80,7 @@ ConfigLoad configLoad;
 
     }
 //    public void sendlocalLeaderBoars(Leaderboard leaderboard) throws IOException{
-//        //leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
+//        leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
 //        leaderboard.load_leaderboard();
 //        PrintWriter pr= new PrintWriter(s.getOutputStream());
 //        System.out.println(leaderboard.send_string());
