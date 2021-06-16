@@ -17,6 +17,9 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private String welcome_text;
    // private final Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
    private final Leaderboard ld = new Leaderboard( "leaderboard/test.csv");
+    ClientManager clientManager;
+
+
     /***
      * Method that creates main menu window of the game
      */
@@ -87,6 +90,14 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         String action = ae.getActionCommand();
+        try {
+            clientManager=new ClientManager();
+            clientManager.SaveMyLeaderboards();
+            clientManager.sendlocalLeaderBoars(ld);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 
         if (action.equals("credits")) {

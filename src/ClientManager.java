@@ -79,16 +79,16 @@ ConfigLoad configLoad;
         pr.flush();
 
     }
-//    public void sendlocalLeaderBoars(Leaderboard leaderboard) throws IOException{
-//        leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
-//        leaderboard.load_leaderboard();
-//        PrintWriter pr= new PrintWriter(s.getOutputStream());
-//        System.out.println(leaderboard.send_string());
-//        pr.println(leaderboard.send_string());
-//        // System.out.println(leaderboard.send_string());
-//        pr.flush();
-//
-//    }
+    public void sendlocalLeaderBoars(Leaderboard leaderboard) throws IOException{
+        leaderboard=new Leaderboard( "leaderboard/test.csv");
+        leaderboard.load_leaderboard();
+        PrintWriter pr= new PrintWriter(s.getOutputStream());
+        System.out.println(leaderboard.send_string());
+        pr.println(leaderboard.send_string());
+        // System.out.println(leaderboard.send_string());
+        pr.flush();
+
+    }
 
 
 

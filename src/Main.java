@@ -45,6 +45,7 @@ public class Main {
 
             clientManager.askForLeaderboard();
             clientManager.getServerLeaderBoard();
+
            // System.out.println(clientManager.getServerLeaderBoard());
 
 

@@ -35,23 +35,23 @@ public class ServerConnector extends Thread implements Serializable{
         pr.flush();
 
     }
-//    public void getlocalLeaderBoard() throws IOException{
-//        try {
-//            InputStreamReader in = new InputStreamReader(s.getInputStream());
-//            BufferedReader bf = new BufferedReader(in);
-//            FileWriter myWriter = new FileWriter("leaderboard/test.csv");
-//            String request = bf.readLine();
-//            while (!request.isEmpty()){
-//                myWriter.write(request + "\n");
-//                request = bf.readLine();
-//            }
-//            bf.close();
-//            myWriter.close();
-//        }
-//        catch (IOException e){
-//            e.printStackTrace();
-//        }
-//    }
+    public void getlocalLeaderBoard() throws IOException{
+        try {
+            InputStreamReader in = new InputStreamReader(s.getInputStream());
+            BufferedReader bf = new BufferedReader(in);
+            FileWriter myWriter = new FileWriter("server/config/remoteLeaderboard.csv");
+            String request = bf.readLine();
+            while (!request.isEmpty()){
+                myWriter.write(request + "\n");
+                request = bf.readLine();
+            }
+            bf.close();
+            myWriter.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
 
@@ -78,6 +78,7 @@ public class ServerConnector extends Thread implements Serializable{
                     break;
                 case "save my leaderboards plx":
                     System.out.println("server : request accepted downloading leaderboar");
+                    getlocalLeaderBoard();
                     break;
                 default:
                     System.out.println("Not recognized request");
