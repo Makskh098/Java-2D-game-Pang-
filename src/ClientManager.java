@@ -4,12 +4,16 @@ import java.nio.file.Files;
 import java.util.Scanner;
 
 public class ClientManager implements Serializable {
-Socket s;
+Socket s=new Socket("localhost", 8989);
 ObjectInputStream ois;
 ConfigLoad configLoad;
 
 
 
+    public boolean isConnected(){
+        return s.isConnected();
+
+    }
     public ClientManager() throws IOException {
 //        s = new Socket("localhost", 8989);
 //        PrintWriter pr = new PrintWriter(s.getOutputStream());
@@ -38,8 +42,8 @@ ConfigLoad configLoad;
             }
             bf.close();
             myWriter.close();
-            configLoad = new ConfigLoad();
-            configLoad.load("config/configDataServer.txt");
+           // configLoad = new ConfigLoad();
+            //configLoad.load("config/configDataServer.txt");
         }
         catch (IOException e) {
             e.printStackTrace();

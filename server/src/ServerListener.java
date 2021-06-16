@@ -8,6 +8,7 @@ import java.net.Socket;
 public class ServerListener {
     ServerSocket ss;
 
+
     public void ListenClosely() throws IOException{
         this.ss=new ServerSocket(8989);
         while (true) {

@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,9 +28,11 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public int level_number;
     public int current_level;
     Ray ray;
+    private boolean isOnline=false;
 
     PointCounter pointCounter= new PointCounter();
     Leaderboard leaderboard;
+    ClientManager clientManager;
 
 
     /***
@@ -37,11 +40,12 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * @param width defines width of map
      * @param height defines height of map
      */
-    public Engine2(int width, int height, JFrame frame,Leaderboard leaderboard){
+    public Engine2(int width, int height, JFrame frame,Leaderboard leaderboard,boolean isOnline){
         frame_g = frame;
         width_of_frame = width;
         height_of_frame = height;
         this.leaderboard=leaderboard;
+        this.isOnline=isOnline;
 
         level_number = ConfigData.number_of_levels;
         lives = ConfigData.number_of_lives;
@@ -257,10 +261,24 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         if (nick.equals("")){
             nick = "Anonim";
         }
-        leaderboard.load_leaderboard();
-        leaderboard.add_score(nick,pointCounter.getCurrentPoints());
-        //Dodac dodawanie do Leaderboarda
-        leaderboard.save_leaderboard();
+        if(isOnline) {
+            leaderboard.load_leaderboard();
+            leaderboard.add_score(nick, pointCounter.getCurrentPoints());
+            leaderboard.save_leaderboard();
+            try {
+                clientManager = new ClientManager();
+                clientManager.SaveMyLeaderboards();
+                clientManager.sendlocalLeaderBoars(leaderboard);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else{
+            leaderboard.load_leaderboard();
+            leaderboard.add_score(nick, pointCounter.getCurrentPoints());
+            leaderboard.save_leaderboard();
+        }
 
 
         pointCounter.resetPoints();
