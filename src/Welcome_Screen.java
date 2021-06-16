@@ -11,13 +11,17 @@ public class Welcome_Screen extends JFrame implements ActionListener {
      * class of main window extends from swing Jframe and implements ActionListener
      */
     private JButton start_b, table_b, autors_b, exit_b;
+    private JToggleButton localRemote_b;
     private JLabel center;
     private JScrollPane scroll;
     private JPanel box;
     private String welcome_text;
-   // private final Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
-   private final Leaderboard ld = new Leaderboard( "leaderboard/test.csv");
+    private boolean isOnline=false;
+    private Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
+
+   ConfigLoad configLoad=new ConfigLoad();;
     ClientManager clientManager;
+
 
 
     /***
@@ -35,6 +39,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         table_b = new JButton("Leader Board");
         autors_b = new JButton("Credits");
         exit_b = new JButton("Exit");
+        localRemote_b = new JToggleButton("Offline");
 
 
         // buttons actions
@@ -50,13 +55,17 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         start_b.addActionListener(this);
         start_b.setActionCommand("start");
 
+        localRemote_b.addActionListener(this);
+        localRemote_b.setActionCommand("switch");
+
 
         // buttons layout
-        box = new JPanel(new GridLayout(4,1));
+        box = new JPanel(new GridLayout(5,1));
         box.add(start_b);
         box.add(table_b);
         box.add(autors_b);
         box.add(exit_b);
+        box.add(localRemote_b);
 
         JPanel south = new JPanel(new GridBagLayout());
         south.add(box);
@@ -90,18 +99,12 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         String action = ae.getActionCommand();
-        try {
-            clientManager=new ClientManager();
-            clientManager.SaveMyLeaderboards();
-            clientManager.sendlocalLeaderBoars(ld);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
 
 
         if (action.equals("credits")) {
-            JOptionPane.showMessageDialog(this, "Jan Bronowski and Maks K.", "Credits", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Jan Bronowski and Maks Khachapuridze", "Credits", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (action.equals("exit")) {
@@ -112,18 +115,60 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         }
 
         if (action.equals("leaderB")) {
+            if(isOnline) {
+                try {
+                    clientManager=new ClientManager();
+                    clientManager.askForLeaderboard();
+                    clientManager.getServerLeaderBoard();
+                    ld = new Leaderboard( "leaderboard/test.csv");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                ld = new Leaderboard( "leaderboard/leaderboard.csv");
+                }
             ld.load_leaderboard();
             JOptionPane.showMessageDialog(this, ld.get_string(), "leaderboard", JOptionPane.INFORMATION_MESSAGE);
         }
         if (action.equals("start")) {
             JFrame frame = new JFrame("Pang");
 
-            frame.add(new Engine2(700,700,frame,ld));
-            frame.setSize(700, 700);
+
+
+            frame.add(new Engine2(600,600,frame,ld,isOnline));
+            frame.setSize(600, 600);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLocation(this.getLocation().x,this.getLocation().y);
             frame.setLocation(this.getLocation());
             frame.setVisible(true);
+        }
+        if(action.equals("switch")){
+            try {
+                clientManager=new ClientManager();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(localRemote_b.isSelected() && clientManager.isConnected()) {
+                localRemote_b.setText("Online");
+                isOnline=true;
+                try {
+                    configLoad.load("config/configDataServer.txt");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                localRemote_b.setText("Offline");
+                isOnline=false;
+
+                try {
+                    configLoad.load("config/configData.txt");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
 
     }
