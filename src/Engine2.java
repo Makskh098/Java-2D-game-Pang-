@@ -267,6 +267,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
     }
 
+
     /***
      * Method calculates positions of objects in game every tact of timer
      * @param e actionEvent for example step of timer
@@ -315,6 +316,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             else{
                 gameOver();
             }
+        }
+
+        if(current_level+1 == ConfigData.number_of_levels && ball_list_small.isEmpty()){
+            gameOver();
         }
         // loads next stage if stage is empty of balls
         loadNext();
