@@ -190,7 +190,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * function to check collision whit ray and balls. If ray hits ball, balls splits to smaller balls or disappear if are small_balls.
      * @param hitbox ray
      */
-    public void collisionRay(Rectangle hitbox){
+    public void ray_collision(Rectangle hitbox){
         for (Ball_2D ele: ball_list_small) {
             if ( ele.intersects(hitbox) ) {
                 ball_list_small.remove(ele);
@@ -254,7 +254,9 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public void gameOver(String message){
         repaint();
 
-        JOptionPane.showMessageDialog(this, message + "\n" + " Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+                message + "\n" + " Your Result:"+pointCounter.getCurrentPoints(),
+                "", JOptionPane.INFORMATION_MESSAGE);
 
         String nick = JOptionPane.showInputDialog(this,"Podaj Nick: ");
         if (nick.equals("")){
@@ -315,7 +317,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
         scaleY = (float)this.getHeight()/height_of_frame;
 
         //collision with ball and ray
-        collisionRay(ray);
+        ray_collision(ray);
 
         // collision with power_UP
         if(powerUP_collision(hero)){

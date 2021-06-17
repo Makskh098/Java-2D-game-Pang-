@@ -30,8 +30,6 @@ public class PowerUP extends Rectangle {
             this.y += temp_fall_speed;
         }
 
-
-
     }
 
     public void reset_position(){

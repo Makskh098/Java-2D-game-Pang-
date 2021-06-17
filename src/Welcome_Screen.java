@@ -19,8 +19,8 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private boolean isOnline=false;
     private Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
 
-   ConfigLoad configLoad=new ConfigLoad();;
-    ClientManager clientManager;
+    public ConfigLoad configLoad=new ConfigLoad();;
+    public ClientManager clientManager;
 
 
 
@@ -134,8 +134,6 @@ public class Welcome_Screen extends JFrame implements ActionListener {
         if (action.equals("start")) {
             JFrame frame = new JFrame("Pang");
 
-
-
             frame.add(new Engine2(600,600,frame,ld,isOnline));
             frame.setSize(600, 600);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -149,6 +147,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             if(localRemote_b.isSelected() && clientManager.isConnected()) {
                 localRemote_b.setText("Online");
                 isOnline=true;
