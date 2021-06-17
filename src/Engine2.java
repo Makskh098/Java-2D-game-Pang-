@@ -28,7 +28,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     public int level_number;
     public int current_level;
     Ray ray;
-    private boolean isOnline=false;
+    public boolean isOnline;
 
     PointCounter pointCounter= new PointCounter();
     Leaderboard leaderboard;
@@ -40,12 +40,12 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
      * @param width defines width of map
      * @param height defines height of map
      */
-    public Engine2(int width, int height, JFrame frame,Leaderboard leaderboard,boolean isOnline){
+    public Engine2(int width, int height, JFrame frame,Leaderboard leaderboard, boolean isOnline){
         frame_g = frame;
         width_of_frame = width;
         height_of_frame = height;
-        this.leaderboard=leaderboard;
-        this.isOnline=isOnline;
+        this.leaderboard = leaderboard;
+        this.isOnline = isOnline;
 
         level_number = ConfigData.number_of_levels;
         lives = ConfigData.number_of_lives;
@@ -60,7 +60,6 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
         current_level = 0;
         load_map(0);
-
 
     }
 
@@ -252,10 +251,10 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     /***
      * Game Over
      */
-    public void gameOver(){
+    public void gameOver(String message){
         repaint();
 
-        JOptionPane.showMessageDialog(this, "Game Over \n Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message + "\n" + " Your Result:"+pointCounter.getCurrentPoints(), "", JOptionPane.INFORMATION_MESSAGE);
 
         String nick = JOptionPane.showInputDialog(this,"Podaj Nick: ");
         if (nick.equals("")){
@@ -332,12 +331,12 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 load_map(current_level);
             }
             else{
-                gameOver();
+                gameOver("Game Over");
             }
         }
 
         if(current_level+1 == ConfigData.number_of_levels && ball_list_small.isEmpty()){
-            gameOver();
+            gameOver("You beat the PANG game!!!");
         }
         // loads next stage if stage is empty of balls
         loadNext();
