@@ -14,7 +14,8 @@ public class PowerUP extends Rectangle {
 
         if (this.y >= 0){ return;}
         temp_fall_speed = fall_speed;
-        this.x = x;
+        if ((this.x = x - width) <= 0){this.x = 0;}
+        else{this.x = x - width;}
         this.y = y;
     }
 
