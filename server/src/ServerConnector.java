@@ -4,13 +4,9 @@ import java.net.Socket;
 
 public class ServerConnector extends Thread implements Serializable{
     Socket s;
-    ObjectOutputStream oos;
-
     ConfigLoad configLoad;
     ConfigData data;
     Leaderboard leaderboard;
-
-
 
     public void sendConfigData() throws IOException{
         configLoad= new ConfigLoad();
@@ -18,11 +14,6 @@ public class ServerConnector extends Thread implements Serializable{
         configLoad.load("server/config/remoteConfigData.txt");
         PrintWriter pr = new PrintWriter(s.getOutputStream());
         pr.println(data.toString());
-      //  System.out.println(data);
-       // System.out.println("sending Config Data");
-       // OutputStream out=s.getOutputStream();
-       // oos=new ObjectOutputStream(out);//s.getOutputStream()
-       // oos.writeObject(data);
         pr.flush();
     }
     public void sendLeaderBoars() throws IOException{
@@ -31,7 +22,6 @@ public class ServerConnector extends Thread implements Serializable{
         PrintWriter pr= new PrintWriter(s.getOutputStream());
                             System.out.println(leaderboard.send_string());
         pr.println(leaderboard.send_string());
-       // System.out.println(leaderboard.send_string());
         pr.flush();
 
     }
