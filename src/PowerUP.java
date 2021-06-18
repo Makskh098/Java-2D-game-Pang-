@@ -1,15 +1,31 @@
 import java.awt.*;
 
+/***
+ * PowerUp class implements power up object in game engine
+ */
 public class PowerUP extends Rectangle {
 
     int fall_speed;
     int temp_fall_speed;
 
+
+    /***
+     * Constructor
+     * @param x horizontal position
+     * @param width width of power up
+     * @param height height of power up
+     * @param fall_speed fall speed of power up
+     */
     public PowerUP(int x, int width, int height,int fall_speed){
         super(x,-100,width,height);
         this.fall_speed = fall_speed;
     }
 
+    /***
+     * method to spawn power up
+     * @param x horizontal position
+     * @param y vertical position
+     */
     public void spawn(int x, int y){
 
         if (this.y >= 0){ return;}
@@ -19,6 +35,10 @@ public class PowerUP extends Rectangle {
         this.y = y;
     }
 
+    /***
+     * movement of power up in the game
+     * @param engine Engine2 object
+     */
     public void move(Engine2 engine){
 
         if(this.y < 0){
@@ -33,6 +53,9 @@ public class PowerUP extends Rectangle {
 
     }
 
+    /***
+     * resets position of power up
+     */
     public void reset_position(){
         this.y = -100;
     }

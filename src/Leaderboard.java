@@ -59,15 +59,17 @@ public class Leaderboard {
 
         return text.toString();
     }
+
+    /***
+     * returns string of leader board witch can be sent via server
+     * @return text form
+     */
     public String send_string(){
         StringBuilder text = new StringBuilder();
         sort();
-        int i=1;
         for (Pair<String,Integer> ele: this.leader_board_list) {
             text.append(ele.getElement0()).append(",").append(ele.getElement1()).append('\n');
-            i += 1;
         }
-
         return text.toString();
     }
 

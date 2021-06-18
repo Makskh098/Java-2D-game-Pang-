@@ -238,10 +238,18 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
     }
 
+    /***
+     * checks powerUp collision with hitbox
+     * @param hitbox hitbox to check
+     * @return ture/false
+     */
     public boolean powerUP_collision(Rectangle hitbox){
         return powerUP.intersects(hitbox);
     }
 
+    /***
+     * spawns power up in specific position on specific condition
+     */
     public void spawn_powerUP(){
         if (pointCounter.getCurrentPoints() % 10 == 0 && pointCounter.getCurrentPoints()>0){
             powerUP.spawn((int) (Math.random()*this.width_of_frame), 5);
@@ -249,7 +257,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
     }
 
     /***
-     * Game Over
+     * gameOver method to stop game
+     * @param message message to show in text box
      */
     public void gameOver(String message){
         repaint();
