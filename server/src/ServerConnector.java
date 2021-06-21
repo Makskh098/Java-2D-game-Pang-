@@ -1,12 +1,19 @@
 import java.io.*;
 import java.net.Socket;
 
+/***
+ * This class contains methods that provides server
+ */
 public class ServerConnector extends Thread implements Serializable{
     Socket s;
     ConfigLoad configLoad;
     ConfigData data;
     Leaderboard leaderboard;
 
+    /***
+     * method sends outputStream with String data to client
+     * @throws IOException
+     */
     public void sendConfigData() throws IOException{
         configLoad= new ConfigLoad();
         data = new ConfigData();
@@ -15,16 +22,23 @@ public class ServerConnector extends Thread implements Serializable{
         pr.println(data.toString());
         pr.flush();
     }
+    /***
+     * method sends outputStream with String data to client
+     * @throws IOException
+     */
     public void sendLeaderBoars() throws IOException{
         leaderboard=new Leaderboard( "server/config/remoteLeaderboard.csv");
         leaderboard.load_leaderboard();
         PrintWriter pr= new PrintWriter(s.getOutputStream());
-                            System.out.println(leaderboard.send_string());
         pr.println(leaderboard.send_string());
         pr.flush();
 
     }
-    public void getlocalLeaderBoard() throws IOException{
+
+    /***
+     * method is getting leaderboards csv data from client and saves it on server.
+     */
+    public void getlocalLeaderBoard(){
         try {
             InputStreamReader in = new InputStreamReader(s.getInputStream());
             BufferedReader bf = new BufferedReader(in);
@@ -42,12 +56,13 @@ public class ServerConnector extends Thread implements Serializable{
         }
     }
 
-
-
     public ServerConnector(Socket s){
         this.s=s;
     }
 
+    /***
+     * Override of method from Thread that is listening requests from client
+     */
     @Override
     public void run(){
         try {
@@ -57,15 +72,15 @@ public class ServerConnector extends Thread implements Serializable{
             String request = bf.readLine();
 
             switch (request) {
-                case "give me ConfigData plx":
+                case "give me ConfigData":
                     System.out.println("server : request accepted sending ConfigData");
                     sendConfigData();
                     break;
-                case "give me Leaderboard plx":
+                case "give me Leaderboard":
                     System.out.println("server : request accepted sending Leaderboar");
                     sendLeaderBoars();
                     break;
-                case "save my leaderboards plx":
+                case "save my leaderboards":
                     System.out.println("server : request accepted downloading leaderboar");
                     getlocalLeaderBoard();
                     break;

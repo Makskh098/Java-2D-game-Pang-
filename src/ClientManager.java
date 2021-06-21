@@ -1,31 +1,29 @@
 import java.io.*;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.util.Scanner;
 
+/***
+ * ClientManager is class that provides communication between client and server
+ * it provides methods with requests to server
+ */
 public class ClientManager implements Serializable {
 Socket s=new Socket("localhost", 8989);
-ObjectInputStream ois;
-ConfigLoad configLoad;
 
+    public ClientManager() throws IOException {
+    }
 
-
+    /***
+     * method is returning boolean depending if client (socket) is connected to the server
+     * @return
+     */
     public boolean isConnected(){
         return s.isConnected();
 
     }
-    public ClientManager() throws IOException {
-//        s = new Socket("localhost", 8989);
-//        PrintWriter pr = new PrintWriter(s.getOutputStream());
-//        pr.println("give me ConfigData plx");
-//        System.out.println("wysłano");
-//        pr.flush();
 
-    }
     public void askForConfigData() throws IOException {
         s = new Socket("127.0.0.1", 8989);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("give me ConfigData plx");
+        pr.println("give me ConfigData");
         pr.flush();
 
     }
@@ -42,8 +40,6 @@ ConfigLoad configLoad;
             }
             bf.close();
             myWriter.close();
-           // configLoad = new ConfigLoad();
-            //configLoad.load("config/configDataServer.txt");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -72,14 +68,14 @@ ConfigLoad configLoad;
     public void askForLeaderboard() throws IOException {
         s = new Socket("127.0.0.1", 8989);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("give me Leaderboard plx");
+        pr.println("give me Leaderboard");
         pr.flush();
 
     }
     public void SaveMyLeaderboards() throws IOException {
         s = new Socket("127.0.0.1", 8989);
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("save my leaderboards plx");
+        pr.println("save my leaderboards");
         pr.flush();
 
     }
@@ -89,11 +85,6 @@ ConfigLoad configLoad;
         PrintWriter pr= new PrintWriter(s.getOutputStream());
         System.out.println(leaderboard.send_string());
         pr.println(leaderboard.send_string());
-        // System.out.println(leaderboard.send_string());
         pr.flush();
-
     }
-
-
-
 }

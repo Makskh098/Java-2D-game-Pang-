@@ -17,10 +17,11 @@ public class Welcome_Screen extends JFrame implements ActionListener {
     private JPanel box;
     private String welcome_text;
     private boolean isOnline=false;
+    private boolean isRunning =false;
     private Leaderboard ld = new Leaderboard( "leaderboard/leaderboard.csv");
-
     public ConfigLoad configLoad=new ConfigLoad();;
     public ClientManager clientManager;
+    public JFrame frame;
 
 
 
@@ -132,15 +133,17 @@ public class Welcome_Screen extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, ld.get_string(), "leaderboard", JOptionPane.INFORMATION_MESSAGE);
         }
         if (action.equals("start")) {
-            JFrame frame = new JFrame("Pang");
+            if(frame==null) {
+                   // this.setVisible(false);
+                    JFrame frame = new JFrame("Pang");
+                    frame.add(new Engine2(600, 600, frame, ld, isOnline));
+                    frame.setSize(600, 600);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.setLocation(this.getLocation().x - this.getWidth() / 4, this.getLocation().y - this.getHeight() / 4);
+                    frame.setVisible(true);
+                }
+            }
 
-            frame.add(new Engine2(600,600,frame,ld,isOnline));
-            frame.setSize(600, 600);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setLocation(this.getLocation().x,this.getLocation().y);
-            frame.setLocation(this.getLocation());
-            frame.setVisible(true);
-        }
         if(action.equals("switch")){
             try {
                 clientManager=new ClientManager();
@@ -152,7 +155,10 @@ public class Welcome_Screen extends JFrame implements ActionListener {
                 localRemote_b.setText("Online");
                 isOnline=true;
                 try {
+                    clientManager.askForConfigData();
+                    clientManager.getConfigData();
                     configLoad.load("config/configDataServer.txt");
+                    ld = new Leaderboard( "leaderboard/test.csv");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -163,6 +169,7 @@ public class Welcome_Screen extends JFrame implements ActionListener {
 
                 try {
                     configLoad.load("config/configData.txt");
+                    ld = new Leaderboard( "leaderboard/leaderboard.csv");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

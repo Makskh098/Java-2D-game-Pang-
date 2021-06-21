@@ -267,8 +267,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 message + "\n" + " Your Result:"+pointCounter.getCurrentPoints(),
                 "", JOptionPane.INFORMATION_MESSAGE);
 
-        String nick = JOptionPane.showInputDialog(this,"Podaj Nick: ");
-        if (nick.equals("")){
+        String nick = JOptionPane.showInputDialog(this,"Podaj Nick :","Save your score",JOptionPane.NO_OPTION);
+        if (nick.equals("") || nick==null){
             nick = "Anonim";
         }
         if(isOnline) {
@@ -293,6 +293,8 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
         pointCounter.resetPoints();
         frame_g.dispatchEvent(new WindowEvent(frame_g, WindowEvent.WINDOW_CLOSING));
+
+
     }
 
 

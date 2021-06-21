@@ -55,6 +55,9 @@ public class Leaderboard {
         for (Pair<String,Integer> ele: this.leader_board_list) {
             text.append(i).append(".    ").append(ele.getElement0()).append("    ").append(ele.getElement1()).append('\n');
             i += 1;
+            if(i==11){
+                break;
+            }
         }
 
         return text.toString();
@@ -110,6 +113,7 @@ public class Leaderboard {
             e.printStackTrace();
         }
     }
+
 
     /***
      * Class which implements structure of Pair
