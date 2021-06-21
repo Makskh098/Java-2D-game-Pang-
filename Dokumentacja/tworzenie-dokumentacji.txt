@@ -1,1 +1,2 @@
 javadoc -d dokumentacja src/*.java -cp src/gson-2.8.6.jar
+javadoc -d dokumentacja_serwer server/src/*.java
