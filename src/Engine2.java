@@ -125,7 +125,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
 
         hero = new Hero((float) (width_of_frame/2 - 30/2), height_of_frame -30,30,30,lives, 0 ,Color.BLUE);
 
-        ray = new Ray((float) (width_of_frame/2 - 30/2), height_of_frame ,10,this.height_of_frame,5);
+        ray = new Ray((float) (width_of_frame/2 - 30/2), height_of_frame , (float) ConfigData.width_of_ray, this.height_of_frame, (float) ConfigData.speed_of_ray);
 
         ball_list_small.clear();
         for (int j = 0; j < number_of_small_balls; j++) {
@@ -144,7 +144,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
             ball_list_extra_large.add(new Ball_2D((float)(width_of_frame*j /number_of_extraLarge_balls),10,(float)ConfigData.radius_of_extraLarge_ball,(float) ConfigData.radius_of_extraLarge_ball,(float) ConfigData.const_Xball_speed_value,(float) ConfigData.const_Xball_speed_value));
         }
 
-        powerUP = new PowerUP(0, 20,20,2);
+        powerUP = new PowerUP(0, ConfigData.width_of_powerUP,ConfigData.height_of_powerUP,ConfigData.fall_speed_of_powerUP);
 
 
     }
@@ -268,7 +268,7 @@ public class Engine2 extends JPanel implements ActionListener, KeyListener {
                 "", JOptionPane.INFORMATION_MESSAGE);
 
         String nick = JOptionPane.showInputDialog(this,"Podaj Nick :","Save your score",JOptionPane.NO_OPTION);
-        if (nick.equals("") || nick==null){
+        if (nick.equals("")){
             nick = "Anonim";
         }
         if(isOnline) {

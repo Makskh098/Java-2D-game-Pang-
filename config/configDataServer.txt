@@ -18,3 +18,6 @@ number_of_lives=1
 speed_of_player=4.0
 width_of_ray=3.0
 speed_of_ray=5.0
+powerUP_width=20
+powerUP_height=20
+powerUP_fall_speed=3

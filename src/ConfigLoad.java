@@ -80,6 +80,11 @@ public class ConfigLoad {
             ConfigData.width_of_ray = Double.parseDouble(prop.getProperty("width_of_ray"));
             ConfigData.speed_of_ray = Double.parseDouble(prop.getProperty("speed_of_ray"));
 
+            // Power UP
+            ConfigData.width_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_width")));
+            ConfigData.height_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_height")));
+            ConfigData.fall_speed_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_fall_speed")));
+
 
         } catch (Exception e) {
             System.out.println("Exception: " + e);
@@ -147,6 +152,11 @@ public class ConfigLoad {
             // Weapon
             ConfigData.width_of_ray = Double.parseDouble(prop.getProperty("width_of_ray"));
             ConfigData.speed_of_ray = Double.parseDouble(prop.getProperty("speed_of_ray"));
+
+            // Power UP
+            ConfigData.width_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_width")));
+            ConfigData.height_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_height")));
+            ConfigData.fall_speed_of_powerUP = Integer.parseInt((prop.getProperty("powerUP_fall_speed")));
 
 
         } catch (Exception e) {

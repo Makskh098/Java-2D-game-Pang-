@@ -33,6 +33,11 @@ public class ConfigData implements Serializable{
     static double width_of_ray;
     static double speed_of_ray;
 
+//  PowerUP
+    static int  width_of_powerUP;
+    static int  height_of_powerUP;
+    static int  fall_speed_of_powerUP;
+
     /***
      *
      * @return returns string version of configData object
@@ -64,6 +69,9 @@ public class ConfigData implements Serializable{
         //res.append("\n");
         res.append("width_of_ray=").append(width_of_ray).append("\n");
         res.append("speed_of_ray=").append(speed_of_ray).append("\n");
+        res.append("powerUP_width=").append(width_of_powerUP).append("\n");
+        res.append("powerUP_height=").append(height_of_powerUP).append("\n");
+        res.append("powerUP_fall_speed=").append(fall_speed_of_powerUP).append("\n");
 
         return res.toString();
     }
